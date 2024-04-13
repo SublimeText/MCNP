@@ -45,9 +45,85 @@ c Cell Cards
 4  0           -1:2:3:-4:5:-6
 
 c Surface Cards
-1  pz -5
-2  pz  5
-7  s   0 -4 -2.5 0.5     $ oxygen sphere
+
+1  p   3
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.surface.mcnp
+$  ^ constant.language.surfacetype.mcnp
+$      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+1  py  3
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.surface.mcnp
+$  ^^ constant.language.surfacetype.mcnp
+$      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+2  pz -5
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.surface.mcnp
+$  ^^ constant.language.surfacetype.mcnp
+$     ^^ meta.number.integer.decimal.mcnp
+$     ^ keyword.operator.arithmetic.mcnp
+$      ^ constant.numeric.value.mcnp
+
+3  pz  5
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.surface.mcnp
+$  ^^ constant.language.surfacetype.mcnp
+$      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+4  s   0 -4 -2.5 0.5     $ oxygen sphere
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
+$  ^ constant.language.surfacetype.mcnp
+$      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$        ^^ meta.surface.mcnp meta.number.integer.decimal.mcnp
+$           ^^^^ meta.surface.mcnp meta.number.float.decimal.mcnp
+$                ^^^ meta.surface.mcnp meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+
+5 K/Y 0 0 2 0.25 1
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
+$ ^^^ constant.language.surfacetype.mcnp
+$     ^ constant.numeric.value.mcnp
+$       ^ constant.numeric.value.mcnp
+$         ^ constant.numeric.value.mcnp
+$           ^^^^ constant.numeric.value.mcnp
+$                ^ constant.numeric.value.mcnp
+
+11 GQ 1 0.25 0.75 0 -0.866
+      2 0 -12 -2 3.464 39
+$^^^^^^^^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
+$     ^ constant.numeric.value.mcnp
+$       ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$         ^ meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
+$          ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$             ^ meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
+$              ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$                ^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                      ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+12 7 CX 1
+$ <- meta.surface.mcnp entity.name.surface.mcnp
+$^^ meta.surface.mcnp
+$  ^ meta.surface.transformation.mcnp
+$   ^^^^^^ meta.surface.mcnp
+$^ entity.name.surface.mcnp
+$  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$    ^^ constant.language.surfacetype.mcnp
+$       ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+*TR7 6 1 -1.732 0 30 60
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$        ^^^^^^ meta.number.float.decimal.mcnp
+$        ^ keyword.operator.arithmetic.mcnp
+$         ^^^^^ constant.numeric.value.mcnp
+$               ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$                 ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$                    ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 c Data Cards
 M100   08016.31c   1.0   $ oxygen 16

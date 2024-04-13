@@ -15,8 +15,8 @@ variables:
 contexts:
   main:
     - include: comments
-    - include: cell-cards
     - include: surface-cards
+    - include: cell-cards
     - include: data-cards
     - include: numbers
     - include: operators
@@ -191,21 +191,24 @@ contexts:
 ###[ SURFACE CARDS ]###########################################################
 
   surface-cards:
-    - match: (?i)^\s{0,4}([+*]?\d+)\s+(?:(-?)(\d+)\s+)?(?=[[a-z]/]{1,3})
+    - match: (?i)^(\s{0,4}([+*]?\d+)\s+)(?:(-?)(\d+)(\s+))?(?=[a-z/]{1,3})
       captures:
-        1: keyword.surfacenumber.mcnp
-        2: meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
-        3: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        1: meta.surface.mcnp
+        2: entity.name.surface.mcnp
+        3: meta.surface.transformation.mcnp meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
+        4: meta.surface.transformation.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        5: meta.surface.mcnp
       push: surface-cards-body
 
   surface-cards-body:
+    - meta_content_scope: meta.surface.mcnp
     - include: statement-end
     - include: comments
     - include: numbers
     - include: operators
-    - match: (?i)(p[xyz]?|s[qxyzo]?|[ck]/?[xyz]|gq|t[xyz]){{break}}
+    - match: (?i:p[xyz]?|s[qxyzo]?|[ck]/?[xyz]|gq|t[xyz]){{break}}
       scope: constant.language.surfacetype.mcnp
-    - match: (?i)(box|rpp|sph|rcc|rhp|hex|rec|trc|ell|wed|arb){{break}}
+    - match: (?i:box|rpp|sph|rcc|rhp|hex|rec|trc|ell|wed|arb){{break}}
       scope: constant.language.surfacetype.mcnp
 
 ###[ DATA CARDS ]##############################################################
