@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[wwp:${1:n}   ${2:5}   \$ Multiplier defining weight window upper limit
+        ${3:3}   \$ Multiplier defining max Russian roulette survival weight
+        ${4:5}   \$ Max number of integer splits
+        ${5:0}   \$ Control where to check a particle's weight
+        ${6:0}   \$ Control where to get lower weight window bounds
+        ${7:0}   \$ Controls treatment of WWE card
+        ${8:1}   \$ Weight-window normalization factor
+        ${9:0}   \$ Energy- and time-splitting control
+        ${10:0}   \$ Limit max lower weight bound for any particle/energy/time
+        ${11:1}   \$ Number of mean-free paths before checking mesh-based weights]]></content>
+	<tabTrigger>WWP</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Weight-window Parameters</description>
+</snippet>

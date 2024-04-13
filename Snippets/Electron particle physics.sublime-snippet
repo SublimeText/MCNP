@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[phys:e  ${1:100}   \$ Upper limit electron energy [MeV]
+        ${2:0}     \$ Generation of photons in MODE e, or bremsstrahlung in MODE p
+        ${3:0}     \$ Production of photons by electrons
+        ${4:0}     \$ Bremsstrahlung angular distribution method
+        ${5:0}     \$ Continuous-energy slowing down (straggling)
+
+        ${6:1}     \$ Production of bremsstrahlung photons along substeps
+        ${7:1}     \$ Electron-induced x-rays produced
+        ${8:1}     \$ Knock-on electrons produced
+        ${9:1}     \$ Photon-induced secondary electrons
+
+        ${10:0}     \$ Bremsstrahlung production on each electron sub step
+        ${11:0}     \$ Choice of Coulomb scattering model
+        ${12:0}     \$ Choice of electron elastic cross section
+        J     \$ Unused
+        ${13:0.917} \$ Stopping power energy spacing
+        ${14:0.001} \$ Control start of single-event transport
+        ${15:0}     \$ Scale Cerenkov photon emission]]></content>
+	<tabTrigger>PHYS:e</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>electron particle physics</description>
+</snippet>

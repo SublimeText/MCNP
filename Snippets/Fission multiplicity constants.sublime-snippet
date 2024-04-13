@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[fmult   ${1:zaid}            \$ Nuclide for which data are entered
+        sfnu    = ${2:x}     \$ x can be single or a list, see manual
+        width   = ${3:w}     \$ Gaussian width FWHM for sampling
+        sfyield = ${4:y}     \$ Spontaneous fission yield (n/s-g)
+        watt    = ${5:a\ b}  \$ Watt energy spectrum parameters
+        method  = ${6:0}     \$ Gaussian sampling algorithm/model physics option
+        data    = ${7:0}     \$ Select data for isotope multiplicities
+        shift   = ${8:0}     \$ Method to modify sampled multiplicity]]></content>
+	<tabTrigger>FMULT</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>fission multiplicity constants</description>
+</snippet>

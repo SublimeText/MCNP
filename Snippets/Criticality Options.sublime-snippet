@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[kopts   blocksize  = ${1:10}         \$ Number of cycles in every outer iteration
+        kinetics   = ${2:no}         \$ Calculate point-kinetics parameters
+        precursor  = ${3:no}         \$ Calculate detailed precursor information
+        ksental    = ${4:mctal}      \$ Format of sensitivity profiles file, KSENTAL
+        fmat       = ${5:no}         \$ Compute the fission matrix
+        fmatconvrg = ${6:no}         \$ Use fission matrix to determine convergence
+        fmataccel  = ${7:no}         \$ Use fission matrix tfor importance weighting
+        fmatsrc    = ${8:no}         \$ Sample source particles uniformly from fission matrix
+        fmatskip   = ${9:1}          \$ Skips n batches before accumulating fission matrix tallies
+        fmatncyc   = ${10:10}         \$ Batches between fission matrix solves
+        fmatspace  = ${11:100000000}  \$ Initial number of nonzero elements to allocate
+        fmatnx     = ${12:0}          \$ X-axis fission matrix mesh spacing
+        fmatny     = ${13:0}          \$ Y-axis fission matrix mesh spacing
+        fmatnz     = ${14:0}          \$ Z-axis fission matrix mesh spacing]]></content>
+	<tabTrigger>KOPTS</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Criticality Options</description>
+</snippet>

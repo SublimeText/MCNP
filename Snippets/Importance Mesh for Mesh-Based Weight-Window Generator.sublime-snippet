@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[mesh    geom  = ${1:rzt}                 \$ Mesh geometry
+        ref   = ${2:0.0\ 0.0\ 0.0}         \$ X, Y, and Z coordinates of the reference point
+        origin= ${3:0.0\ 0.0\ 0.0}         \$ Coordinates (x,y,z) of mesh origin
+        axs   = ${4:0.0\ 0.0\ 1.0}         \$ Direction of the cylinder axis
+        vec   = ${5:1.0\ 0.0\ 0.0}         \$ Vector defining plane for theta=0
+        imesh = ${6:10}      iints = ${7:5}   \$ Coarse mesh points in X/R
+        jmesh = ${8:10}      jints = ${9:5}   \$ Coarse mesh points in Y/Z
+        kmesh = ${10:10}      kints = ${11:5}   \$ Coarse mesh points in Z/T]]></content>
+	<tabTrigger>MESH</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Importance Mesh for Mesh-Based Weight-Window Generator</description>
+</snippet>

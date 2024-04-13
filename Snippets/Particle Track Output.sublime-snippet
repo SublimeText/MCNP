@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[ptrac   buffer   = ${1:100}       \$ Storage available for filtered events within each history
+        file     = ${2:bin}       \$ Controls file type
+        flushnps = ${3:n}         \$ Write frequency for HDF5 output file type
+        max      = ${4:10000}     \$ Maximum number of events to write
+        meph     = ${5:n}         \$ Max number of events per history to write
+        write    = ${6:pos}       \$ Particle parameters written
+        coinc    = ${7:col}       \$ Activates file format specifically for coincidence tally scoring
+        event    = ${8:e}         \$ Type of events written
+        filter   = ${9:f}         \$ Additional MCNP6 variables for filtering each event
+        type     = ${10:p1 p2...}  \$ Filters events based on one or more particle types
+        nps      = ${11:n}         \$ Range of particle histories for which events will be output
+        cell     = ${12:c1 c2...}  \$ Cell numbers for filtering histories
+        surface  = ${13:s1 s2...}  \$ Surface numbers for filtering histories
+        tally    = ${14:t1 t2...}  \$ Tally numbers for filtering histories
+        value    = ${15:0.0}       \$ Tally cutoff above which history events will be written]]></content>
+	<tabTrigger>PTRAC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Particle Track Output</description>
+</snippet>

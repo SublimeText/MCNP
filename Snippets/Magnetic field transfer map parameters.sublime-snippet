@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[cosyp   ${1:prefix}  \$ The COSY map file prefix number
+        ${2:1}       \$ Horizontal axis orientation
+        ${3:2}       \$ Vertical axis orientation
+        ${4:emapk}   \$ Operating beam energy of maps]]></content>
+	<tabTrigger>COSYP</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Magnetic Field Transfer Map Parameters</description>
+</snippet>

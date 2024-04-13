@@ -1,0 +1,91 @@
+$ SYNTAX TEST "MCNP.sublime-syntax"
+
+C comment
+$ <- comment.line.mcnp punctuation.definition.comment.mcnp
+$^^^^^^^^ comment.line.mcnp - punctuation
+
+$ comment
+$ <- comment.line.mcnp punctuation.definition.comment.mcnp
+$^^^^^^^^ comment.line.mcnp - punctuation
+
+ACT dnbias $ comment
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+$          ^^^^^^^^^ comment.line.mcnp
+
+    ACT dnbias $ comment
+$   ^^^ keyword.other.mcnp
+$       ^^^^^^ variable.other.mcnp
+$              ^^^^^^^^^ comment.line.mcnp
+
+     ACT dnbias $ comment
+$    ^^^ - keyword
+$        ^^^^^^ - variable
+$               ^^^^^^^^^ comment.line.mcnp
+
+bfld4 type const
+$ <- keyword.other.mcnp
+$^^^ keyword.other.mcnp
+$   ^ constant.numeric.value.mcnp
+$     ^^^^ variable.other.mcnp
+$          ^^^^^ constant.language.mcnp
+
+bfld4 type = const
+$ <- keyword.other.mcnp
+$^^^ keyword.other.mcnp
+$   ^ constant.numeric.value.mcnp
+$     ^^^^ variable.other.mcnp
+$          ^ keyword.operator.assignment.mcnp
+$            ^^^^^ constant.language.mcnp
+
+c Cell Cards
+1  100 -0.0014 -7               imp:n=1 tmp=2.53e-08
+2  200 -7.86   -8               imp:n=1 tmp=2.53e-08
+4  0           -1:2:3:-4:5:-6
+
+c Surface Cards
+1  pz -5
+2  pz  5
+7  s   0 -4 -2.5 0.5     $ oxygen sphere
+
+c Data Cards
+M100   08016.31c   1.0   $ oxygen 16
+
+c
+MODE   n p
+
+c
+sdef   par = 1
+       erg = 14.0
+
+c
+fc4    Rectengular neutron flux mesh tally, 2cm voxels
+$ <- keyword.other.mcnp
+$^ keyword.other.mcnp
+$ ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.mcnp
+
+fc4    Rectengular neutron
+       flux mesh tally, 2cm voxels
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.mcnp
+
+fmesh4:n
+$ <- keyword.other.mcnp
+$^^^^ keyword.other.mcnp
+$    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$     ^ punctuation.separator.colon.mcnp
+       origin = 0.0 0.0 0.0
+$      ^^^^^^^ variable.other.mcnp
+$             ^ keyword.operator.assignment.mcnp
+$               ^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                   ^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                       ^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+       geom   = xyz
+$      ^^^^ variable.other.mcnp
+$             ^ keyword.operator.assignment.mcnp
+$               ^^^ constant.language.mcnp
+       out    = xdmf
+$      ^^^ variable.other.mcnp
+$             ^ keyword.operator.assignment.mcnp
+$               ^^^^ constant.language.mcnp

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[nps     ${1:npp}          \$ The total number of histories to be run in the problem
+        ${2:npsmg}        \$ Direct source contributions to pixels of FIR radiography grid
+        ${3:n_per_batch}  \$ Number of histories used per batch for tallies with batch statistics]]></content>
+	<tabTrigger>NPS</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>History Cutoff</description>
+</snippet>

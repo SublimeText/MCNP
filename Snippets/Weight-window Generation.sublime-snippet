@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[wwg     ${1:n}   \$ Problem tally number to optimise for
+        ${2:t}   \$ Invokes cell (>0) or mesh-based (=0) generator
+        ${3:w}   \$ Value of generated lower weight-window bound
+        4j  \$ Unused
+        ${4:i}   \$ Toggle energy (=0) or time (=1) dependent weight windows]]></content>
+	<tabTrigger>WWG</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Weight-window Generation</description>
+</snippet>

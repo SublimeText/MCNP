@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[hsrc    ${1:n_x}      \$ Number of mesh intervals in x direction
+        ${2:x_min}    \$ Minimum x value for mesh
+        ${3:x_max}    \$ Maximum x value for mesh
+        ${4:n_y}      \$ Number of mesh intervals in y direction
+        ${5:y_min}    \$ Minimum y value for mesh
+        ${6:y_max}    \$ Maximum y value for mesh
+        ${7:n_z}      \$ Number of mesh intervals in z direction
+        ${8:z_min}    \$ Minimum z value for mesh
+        ${9:z_max}    \$ Maximum z value for mesh]]></content>
+	<tabTrigger>HSRC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Shannon Entropy Mesh</description>
+</snippet>

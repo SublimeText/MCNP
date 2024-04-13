@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[embed${1:0}
+        background = ${2:c}               \$ Cell number of the background pseudo-cell
+        matcell    = ${3:m1 c1 m2 c2...}  \$ Integer material-cell pairs
+        mgeoin     = ${4:filename}        \$ Input file containing the mesh description
+        overlap    = ${5:filename}        \$ Model to treat overlapping parts [EXIT, ENTRY, AVERAGE]
+        meshgeo    = ${6:hdf5}            \$ Mesh file format: [HDF5, LNK3DNT, ABAQUS, MCNPUM]
+        hdf5file   = ${7:filename}        \$ (opt) Name for HDF5-based output file
+        filetype   = ${8:ascii}           \$ (opt) Output file type [ASCII, BINARY]
+        calc_vols  = ${9:no}              \$ (opt) Toggle volume calculation [YES, NO]
+        length     = ${10:1}               \$ (opt) Conversion factor to cm
+        debug      = ${11:echomesh}        \$ (opt) Write geometry to OUTP [ECHOMESH]
+        elementchk = ${12:yes}             \$ (opt) Toggle UM elemental calcs and reporting [YES, NO]
+        mgeout     = ${13:filename}        \$ (opt, dep) EEOUT results file to write
+        meein      = ${14:filename}        \$ (opt, dep) EEOUT results file to read
+        gmvfile    = ${15:filename}        \$ (opt, dep) Name of the GMV output file
+        mcnpumfile = ${16:filename}        \$ (opt, dep) Name of the MCNPUM output file]]></content>
+	<tabTrigger>EMBED</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Embedded geometry</description>
+</snippet>

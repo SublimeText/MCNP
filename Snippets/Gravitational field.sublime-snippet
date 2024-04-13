@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[field   gcut = ${1:0.653}     \$ Gravitational binding energy (eV) threshold
+        gpar = ${2:1}         \$ Particle type (limited to neutrons)
+        grad = ${3:3671}      \$ Radius of planetary object (km)
+        gsur = ${4:s1\ s2...}  \$ List of one or more surface numbers]]></content>
+	<tabTrigger>FIELD</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Gravitational field</description>
+</snippet>

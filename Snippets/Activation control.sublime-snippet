@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[act     fission = ${1:n}         \$ Type of delayed particle(s) produced from fission
+        nonfiss = ${2:none}      \$ Type of delayed particle(s) produced from non-fission
+        dn      = ${3:library}   \$ Delayed neutron data source
+        dg      = ${4:none}      \$ Delayed gamma data source
+        thresh  = ${5:10.95}     \$ Fraction of retained highest-amp. discrete delayed-gamma lines
+        dnbias  = ${6:1}         \$ Delayed neutrons produced per interaction
+        nap     = ${7:10}        \$ N of act. products with calculated cumul. dist. functions
+        dneb    = ${8:w1,e1,w2,e2...} \$ Delayed neutron energy biasing parameters
+        dgeb    = ${9:w1,e1,w2,e2...} \$ Delayed photon energy biasing parameters
+        pecut   = ${10:0}         \$ Delayed-gamma energy cutof [MeV]
+        hlcut   = ${11:0}         \$ Spontaneous-decay half-life threshold [s]
+        sample  = ${12:correlate} \$ Flag for correlated or uncorrelated [MeV]]]></content>
+	<tabTrigger>ACT</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>activation control</description>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[tropt   mcscat = ${1:fnal1}     \$ Multiple Coulomb scattering
+        eloss  = ${2:strag1}    \$ Slowing down energy losses
+        nreact = ${3:on}        \$ Nuclear reactions
+        nescat = ${4:on}        \$ Nuclear elastic scattering
+        genxs  = ${5:filename}  \$ If absent, standard transport occurs]]></content>
+	<tabTrigger>TROPT</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>transport options</description>
+</snippet>

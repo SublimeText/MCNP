@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[c DXTRAN TMESH Mesh Tally
+${1:r}mesh${2:4}:${3:n}
+        trans = ${3:n}      \$ TRn card number used to translate entire mesh
+c
+cora${2:3}   ${10:ca1\ ca2...}     \$ Mesh bounds in X (rec) or R (cyl/sph)
+corb${2:3}   ${11:cb1\ cb2...}     \$ Mesh bounds in Y (rec), Z (cyl), or Phi (sph)
+corc${2:3}   ${12:cc1\ cc2...}     \$ Mesh bounds in Z (rec) or Theta (cyl/sph)
+c
+ergsh${2:3}  ${13:low\ high}       \$ Lower/upper energy(+ve) or time(-ve) limits for stroring to tally
+mshmf${14:0}  ${15:[e1\ f1]...}     \$ Pairs of energy and response functions
+c]]></content>
+	<tabTrigger>RMESH4 - CMESH4 - SMESH4</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>DXTRAN TMESH Mesh Tally</description>
+</snippet>

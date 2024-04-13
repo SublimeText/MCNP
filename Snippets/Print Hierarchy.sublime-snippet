@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[fq${1:4}     F    \$ Cell, surface, or detector bins
+        D    \$ Direct or flagged bins
+        U    \$ User bins
+        S    \$ Segment bins
+        M    \$ Multiplier bins
+        C    \$ Cosine bins
+        E    \$ Energy bins
+        T    \$ Time bins]]></content>
+	<tabTrigger>FQn</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Print Hierarchy</description>
+</snippet>

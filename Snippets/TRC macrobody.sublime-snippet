@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[TRC       \$ Macrobody: Truncated Right-angle Cone
+        ${1:x} ${2:y} ${3:z}     \$ (x,y,z) coordinates of the cone bottom
+        ${4:h1} ${5:h2} ${6:h3}  \$ Cone axis height vector
+        ${7:r1}        \$ Radius of lower cone base
+        ${10:r2}        \$ Radius of upper cone base]]></content>
+	<tabTrigger>TRC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>TRC macrobody</description>
+</snippet>

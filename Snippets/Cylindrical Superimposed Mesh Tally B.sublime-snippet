@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[fc4    Cylindrical mesh tally
+fmesh4:${1:n}
+        origin= ${2:0.0\ 0.0\ 0.0}         \$ Coordinates (x,y,z) of mesh origin
+        axs   = ${3:0.0\ 0.0\ 1.0}         \$ Direction of the cylinder axis
+        vec   = ${4:1.0\ 0.0\ 0.0}         \$ Vector defining plane for theta=0
+        geom  = ${5:rzt}                 \$ Mesh geometry
+        out   = ${6:xdmf}                \$ Output format
+        imesh = ${7:10}      iints = ${8:5}   \$ Coarse mesh points in R
+        jmesh = ${9:10}      jints = ${10:5}   \$ Coarse mesh points in Z
+        kmesh = ${11:10}      kints = ${12:5}   \$ Coarse mesh points in T
+        emesh = ${13:1.0e36}              \$ Energy bin upper edges (MeV)]]></content>
+	<tabTrigger>FMESHn (cyl)</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Superimposed Mesh Tally B</description>
+</snippet>

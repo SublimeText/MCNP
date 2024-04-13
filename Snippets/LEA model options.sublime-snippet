@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[lea     ${1:1}       \$ Control generation of de-excitation photons
+        ${2:4}       \$ Level of physics applied for LAHET-PHT photon physics
+        ${3:1}       \$ Mass-energy balancing in the cascade stage
+        ${4:0}       \$ Mass-energy balancing in evaporation stage
+        ${5:1}       \$ Fermi-breakup model nuclide range
+        ${6:0}       \$ Level-density model
+        ${7:-1}      \$ Evaporation and fission models
+        ${8:1}       \$ Allow or suppress fission]]></content>
+	<tabTrigger>LEA</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>physics models options</description>
+</snippet>

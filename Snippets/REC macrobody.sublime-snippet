@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[REC          \$ Macrobody: Right Elliptical Cylinder
+        ${1:x} ${2:y} ${3:z}        \$ (x,y,z) coordinates of the cylinder bottom
+        ${4:h1} ${5:h2} ${6:h3}     \$ Cylinder axis height vector
+        ${7:v1x} ${8:v1y} ${9:v1z}  \$ Ellipse minor axis vector, normal to (h1,h2,h3)
+        ${10:v2x} ${11:v2y} ${12:v2z}  \$ Ellipse major axis vector, orthogonal to (h1,h2,h3) and (v1x,v1y,v1z)]]></content>
+	<tabTrigger>REC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>REC macrobody</description>
+</snippet>

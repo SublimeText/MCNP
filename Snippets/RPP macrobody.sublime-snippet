@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[RPP       \$ Macrobody: Rectangular Parallelepiped
+        ${1:xmin} ${2:xmax} \$ Termini of box sides normal to the x axis
+        ${3:ymin} ${4:ymax} \$ Termini of box sides normal to the y axis
+        ${5:zmin} ${6:zmax} \$ Termini of box sides normal to the z axis]]></content>
+	<tabTrigger>RPP</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>RPP macrobody</description>
+</snippet>

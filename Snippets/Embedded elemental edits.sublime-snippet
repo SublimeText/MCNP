@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[embee${1:0}:n
+        embed   = ${2:n}          \$ Embedded mesh universe number
+        factor  = ${3:1.0}        \$ (opt) Multiplicative constant
+        energy  = ${4:1.0}        \$ (opt) Conversion factor from MeV/g
+        time    = ${5:1.0}        \$ (opt) Conversion factor from shakes
+        atom    = ${6:no}         \$ (opt) Multiply by atom density [YES, NO]
+        mat     = ${7:0}          \$ (opt) Material number, 0=use cell material
+        list    = ${8:values}     \$ (opt) List of ENDF or special reaction numbers
+        mtype   = ${9:flux}       \$ (opt) Multiplier type
+        errors  = ${10:yes}        \$ (opt, dep) Record rel. err. [YES, NO]
+        comment = ${11:some text}  \$ (opt, dep) Comment in EEOUT file]]></content>
+	<tabTrigger>EMBEE</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>embedded elemental edits</description>
+</snippet>

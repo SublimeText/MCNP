@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[sdef    par = ${1:1}            \$ Source particle type(s) by symbol or number
+        erg = ${2:14.0}         \$ Kinetic energy (MeV)
+        pos = ${3:0\ 0\ 0}        \$ Reference point for position sampling
+        x   = ${4:0}            \$ X coordinate of position
+        y   = ${5:0}            \$ Y coordinate of position
+        z   = ${6:0}            \$ Z coordinate of position
+        vec = ${7:0\ 0\ 1}        \$ Reference vector for DIR in vector notation
+        rad = ${8:0}            \$ Radial distance of the position from POS or AXS
+        ext = ${9:0}            \$ Vol: dist. from POS along AXS. Sur: cosine from AXS
+        sur = ${10:0}            \$ Surface number
+        nrm = ${11:1}            \$ Sign of the surface normal
+        wgt = ${12:1.0}          \$ Particle weight
+        tme = ${13:0}            \$ Time (shakes)
+        eff = ${14:0.01}         \$ Rejection efficiency criterion for position sampling
+        dir = d            \$ Cosine of angle between VEC and direction of flight
+        ccc = n            \$ Cookie-cutter cell number
+        tr  = n            \$ Source particle transformation number
+        axs = a            \$ Reference vector for EXT and RAD in vector notation
+        cel = c            \$ Cell number
+        ara = area         \$ Area of surface
+        loc = lat lng alt  \$ Location of cosmic particle source
+        dat = m d year     \$ Date as month - day - year
+        bem = exn eyn bml  \$ Beam emittance parameters
+        bap = ba1 ba2 u    \$ Beam aperture parameters]]></content>
+	<tabTrigger>SDEF (full)</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>General source definition</description>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[dbrc    endf = ${1:nn}        \$ Library identifier for scattering data at 0K
+        emax = ${2:eee}       \$ Upper energy limit for applying DBRC [MeV]
+        isos = ${3:iso_list}  \$ List of ZZZAAA identifiers, no suffixes]]></content>
+	<tabTrigger>DBRC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>doppler broadening resonance correction</description>
+</snippet>

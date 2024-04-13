@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[ELL          \$ Macrobody: Ellipsoid
+        ${1:v1x} ${2:v1y} ${3:v1z}  \$ Coordinates of first focus (r>0) or ellipsoid center (r<0)
+        ${4:v2x} ${5:v2y} ${6:v2z}  \$ Coordinates of second focus (r>0) or major axis vector (r<0)
+        ${7:r}            \$ major (r>0) or minor (r<0) radius length]]></content>
+	<tabTrigger>ELL</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>ELL macrobody</description>
+</snippet>

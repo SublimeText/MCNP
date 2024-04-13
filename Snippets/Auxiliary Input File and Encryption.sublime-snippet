@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[read    file   = ${1:/path/to/input}   \$ Content of this file is inserted after READ card
+        decode = ${2:password}         \$ Allows reading of an encrypted file
+        encode = ${3:password}         \$ Allows the writing of an encrypted file
+        ${4:noecho}                    \$ Suppress printing if READ content in OUTP file
+        ${5:echo}                      \$ Resume echoing READ content to OUTP after NOECHO on previous READ card]]></content>
+	<tabTrigger>READ</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Auxiliary Input File and Encryption</description>
+</snippet>

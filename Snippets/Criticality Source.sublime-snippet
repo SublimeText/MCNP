@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[kcode   ${1:1000}   \$ Number of source histories per cycle
+        ${2:1.0}    \$ Initial guess for k_eff
+        ${3:30}     \$ Number of cycles to be skipped before beginning tally accumulation
+        ${4:130}    \$ Total number of cycles to be done
+        ${5:4500}   \$ Number of source points for which to allocate storage
+        ${6:0}      \$ Controls normalization of tallies
+        ${7:6500}   \$ Maximum number of cycle values on MCTAL or RUNTPE files
+        ${8:1}      \$ Cycles over which summary and tally information are averaged]]></content>
+	<tabTrigger>KCODE</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Criticality Source</description>
+</snippet>

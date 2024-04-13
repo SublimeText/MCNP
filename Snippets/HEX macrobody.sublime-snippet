@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[HEX       \$ Macrobody: Right Hexagonal Prism
+        ${1:x} ${2:y} ${3:z}     \$ (x,y,z) coordinates at the bottom center of the hexagonal prism
+        ${4:h1} ${5:h2} ${6:h3}  \$ Vector from the bottom to top of hexagonal prism
+        ${7:r1} ${8:r2} ${9:r3}  \$ Vector from the axis to the center of the first facet
+        ${10:s1} ${11:s2} ${12:s3}  \$ Vector to center of the second facet (optional for regular hexagon)
+        ${13:t1} ${14:t2} ${15:t3}  \$ Vector to center of the third facet (optional for regular hexagon)]]></content>
+	<tabTrigger>HEX</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>HEX macrobody</description>
+</snippet>

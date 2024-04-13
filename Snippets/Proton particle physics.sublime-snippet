@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[phys:h  ${1:100}   \$ Upper limit proton energy [MeV]
+        ${2:0}     \$ Analog energy limit [MeV]
+        ${3:-1}    \$ Table-based physics cutoff
+        J     \$ Unused
+        ${4:0}     \$ Controls charged-particle straggling
+        J     \$ Unused
+        ${5:0}     \$ Recoil production control for light-ion tabular physics
+        J J J \$ Unused
+        ${6:0}     \$ Controls the choice of Coulomb scattering model
+        ${7:0}     \$ Controls treatment of nuclear interactions
+        ${8:0}     \$ Controls treatment of nuclear elastic scattering
+        ${9:0.917} \$ Controls stopping power energy spacing
+        J     \$ Unused
+        ${10:0}     \$ Scale Cerenkov photon emission
+        ${11:0}     \$ Lower energy delta-ray cutoff [MeV]]]></content>
+	<tabTrigger>PHYS:h</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>proton particle physics</description>
+</snippet>

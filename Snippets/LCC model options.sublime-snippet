@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[lcc     ${1:1.0}     \$ Rescaling factor of the cascade duration
+        ${2:45.0}    \$ Potential depth [MeV]
+        ${3:8.0}     \$ Maximum impact parameter for Pauli blocking
+        ${4:0}       \$ Controls the Pauli blocking parameter
+        ${5:-2}      \$ Diffuse nuclear surface based on Wood-Saxon density
+        J J     \$ Unused
+        ${6:0}       \$ Use Bertini model below this energy [MeV]
+        ${7:0}       \$ Write no INCL bank particles below this energy
+        ${8:0}       \$ Write no ABLA bank particles below this energy]]></content>
+	<tabTrigger>LCC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>physics models options</description>
+</snippet>

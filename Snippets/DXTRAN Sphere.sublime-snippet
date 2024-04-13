@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[dxt:${1:n}   ${2:xk\ yk\ zk}  \$ Coordinates of center of the kth pair of spheres
+        ${3:rik}       \$ Radius of the kth inner sphere (cm)
+        ${4:rok}       \$ Radius of the kth outer sphere (cm)
+        ${5:0.0}       \$ Upper weight cutoff for DXTRAN weight-cutoff
+        ${6:0.0}       \$ Lower weight cutoff for DXTRAN weight-cutoff
+        ${7:0.0}       \$ Minimum photon weight]]></content>
+	<tabTrigger>DXT</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Importance Mesh for Mesh-Based Weight-Window Generator</description>
+</snippet>

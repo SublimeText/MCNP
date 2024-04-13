@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[ARB       \$ Macrobody: Arbitrary Polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of first corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of second corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of third corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of fourth corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of fifth corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of sixth corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of seventh corner of the polyhedron
+        x1 y2 z3  \$ (x,y,z) coordinates of eighth corner of the polyhedron
+        ni        \$ Four-digit numbers describing a side of the polyhedron by corresponding corners]]></content>
+	<tabTrigger>ARB</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>ARB macrobody</description>
+</snippet>

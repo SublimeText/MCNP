@@ -1,0 +1,1404 @@
+%YAML 1.2
+---
+# https://mcnp.lanl.gov/index.html
+# http://www.sublimetext.com/docs/syntax.html
+name: MCNP
+scope: source.mcnp
+version: 2
+
+file_extensions:
+  - mcnp
+
+variables:
+  break: (?!\S)
+
+contexts:
+  main:
+    - include: comments
+    - include: cell-cards
+    - include: surface-cards
+    - include: data-cards
+    - include: numbers
+    - include: operators
+
+  comments:
+    - include: line-comments
+    - include: inline-comments
+
+  data-cards:
+    - include: geometry
+    - include: material
+    - include: physics
+    - include: source
+    - include: tally
+    - include: perturbation
+    - include: mesh-tally
+    - include: variance-reduction
+    - include: control
+    - include: miscellaneous
+
+  control:
+    - include: ctrl-cardname
+    - include: STOP
+    - include: RAND
+    - include: PTRAC
+    - include: PIO
+    - include: READ
+
+  geometry:
+    - include: geometry-cardname
+    - include: geometry-cardname-starred
+    - include: geometry-cardname-numbered
+    - include: VOL
+    - include: TRn
+    - include: DMn
+    - include: DAWWG
+    - include: EMBED
+    - include: EMBEE
+
+  material:
+    - include: material-cardname
+    - include: Mn
+    - include: MTn
+    - include: MXn
+    - include: OTFDB
+    - include: TOTNU
+    - include: XSn
+    - include: DRXS
+
+  mesh-tally:
+    - include: FMESHn
+    - include: tmesh-markers
+    - include: tmesh-numbered
+    - include: MSHMFn
+    - include: XMESH1
+    - include: XMESH2
+    - include: XMESH3
+    - include: XMESH4
+    - include: SPDTL
+
+  miscellaneous:
+    - include: vertical-input
+    - include: SDDR
+    - include: DECMn
+    - include: NACT
+    - include: DECTRn
+    - include: NCMn
+    - include: NAMn
+
+  perturbation:
+    - include: PERTn
+    - include: KPERTn
+    - include: KSENn
+
+  physics:
+    - include: physics-cardname
+    - include: physics-cardname-p
+    - include: MPHYS
+    - include: ACT
+    - include: DBRC
+    - include: FMULT
+    - include: TROPT
+    - include: BFLDn
+    - include: FIELD
+
+  source:
+    - include: SDEF
+    - include: SIn
+    - include: SPn-SBn
+    - include: DSn
+    - include: SCn
+    - include: SSW
+    - include: SSR
+    - include: KCODE-KSRC-HSRC
+    - include: KOPTS
+    - include: BURN
+
+  tally:
+    - include: Fn-plus
+    - include: F5-detector
+    - include: F5-array
+    - include: Fn
+    - include: FCn
+    - include: En
+    - include: Tn
+    - include: Cn
+    - include: FQn
+    - include: FMnFSnFUn
+    - include: DEnDFn
+    - include: EMnTMnCFnSFnSDnTFn
+    - include: FTn
+    - include: NOTRN
+
+  variance-reduction:
+    - include: vr-cardname
+    - include: vr-cardname-p
+    - include: vr-cardname-n
+    - include: vr-cardname-n-p
+    - include: VAR
+    - include: DDn
+    - include: PDn
+    - include: MESH
+
+###[ COMMENTS ]################################################################
+
+  inline-comments:
+    - match: \$
+      scope: punctuation.definition.comment.mcnp
+      push: comment-body
+
+  line-comments:
+    - match: ^\s{0,4}([cC])\s
+      captures:
+        1: punctuation.definition.comment.mcnp
+      push: comment-body
+
+  comment-body:
+    - meta_scope: comment.line.mcnp
+    - match: $\n?
+      pop: 1
+
+###[ CELL CARDS ]##############################################################
+
+  cell-cards:
+    # like-cell-cards
+    - match: (?i)^\s{0,4}(\d+)\s+(like)\s+\d+\s+(but){{break}}
+      captures:
+        1: keyword.cellnumber.mcnp
+        2: constant.language.mcnp
+        3: constant.language.mcnp
+      push: cell-body
+    # material-cell-cards
+    - match: (?i)^\s{0,4}(\d+)\s+(?=[1-9]\d*\s+\S+)
+      captures:
+        1: keyword.cellnumber.mcnp
+      push: cell-body
+    # void-cell-cards
+    - match: (?i)^\s{0,4}(\d+)\s+(0){{break}}
+      captures:
+        1: keyword.cellnumber.mcnp
+        2: constant.numeric.cellmaterial.mcnp
+      push: cell-body
+
+  cell-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i:IMP|VOL|PWT|EXT|FCL|WWN|DXC|NONU|PD|TMP|TRCL|LAT|FILL|ELPT|COSY|BFLCL|UNC|U)\b
+      scope: variable.other.mcnp
+
+###[ SURFACE CARDS ]###########################################################
+
+  surface-cards:
+    - match: (?i)^\s{0,4}([+*]?\d+)\s+(?:(-?)(\d+)\s+)?(?=[[a-z]/]{1,3})
+      captures:
+        1: keyword.surfacenumber.mcnp
+        2: meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
+        3: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: surface-cards-body
+
+  surface-cards-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(p[xyz]?|s[qxyzo]?|[ck]/?[xyz]|gq|t[xyz]){{break}}
+      scope: constant.language.surfacetype.mcnp
+    - match: (?i)(box|rpp|sph|rcc|rhp|hex|rec|trc|ell|wed|arb){{break}}
+      scope: constant.language.surfacetype.mcnp
+
+###[ DATA CARDS ]##############################################################
+
+  ACT:
+    - match: (?i)^\s{0,4}(act){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: ACT-body
+
+  ACT-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(dg)\s*(?:(=)\s*)?(lines|mg|none)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(dn)\s*(?:(=)\s*)?(model|library|both|prompt)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(nonfiss|fission)\s*(?:(=)\s*)?(none|[npefa,\s]+)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(sample)\s*(?:(=)\s*)?(correlate|nonfiss_cor)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(thresh|dnbias|nap|d[ng]eb|pecut|hlcut)(?=[=\s])
+      scope: variable.other.mcnp
+
+  BFLDn:
+    - match: (?i)^\s{0,4}(bfld)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: BFLDn-body
+
+  BFLDn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(field|vec|axs|refpnt|mxdeflc|maxstep|ffedges)(?=[=\s])
+      scope: variable.other.mcnp
+    - match: (?i)(type)\s*(?:(=)\s*)?(const|quad|quadff)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  BURN:
+    - match: (?i)^\s{0,4}(burn){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: BURN-body
+
+  BURN-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(time|pftrac|power|omit|afmin|bopt|swapb|matvol|matmod|mat|PFRAC)(?=[=\s])
+      scope: variable.other.mcnp
+    - match: (?i)(nostats)
+      scope: constant.language.mcnp
+
+  Cn:
+    - match: (?i)^\s{0,4}(\**C)(\d*[124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: Cn-body
+
+  Cn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i:t|C)$
+      scope: constant.language.mcnp
+
+  DAWWG:
+    - match: (?i)^\s{0,4}(DAWWG){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: DAWWG-body
+
+  DAWWG-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(points|xsec|tally|block)(?=[=\s])
+      scope: variable.other.mcnp
+
+  DBRC:
+    - match: (?i)^\s{0,4}(dbrc){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: DBRC-body
+
+  DBRC-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(endf|emax|isos)(?=[=\s])
+      scope: variable.other.mcnp
+
+  DDn:
+    - match: (?i)^\s{0,4}(dd)(\d*){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  DECMn:
+    - match: (?i)^\s{0,4}(decm)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: DECMn-body
+
+  DECMn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(cells|mat|rho)\s*(?==?)
+      scope: variable.other.mcnp
+
+  DECTRn:
+    - match: (?i)^\s{0,4}(dectr)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  DEnDFn:
+    - match: (?i)^\s{0,4}(d[ef])(\d*[0124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: DEnDFn-body
+
+  DEnDFn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(ic|iu|fac)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(log|lin){{break}}
+      scope: constant.language.mcnp
+
+  DMn:
+    - match: (?i)^\s{0,4}(DM)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: DMn-body
+
+  DMn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+
+  DRXS:
+    - match: (?i)^\s{0,4}(drxs){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: DRXS-body
+
+  DRXS-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\d+(\.\d{1,2}[a-z]){{break}}
+      captures:
+        1: constant.language.mcnp
+
+  DSn:
+    - match: (?i)^\s{0,4}(ds)(\d+)(\s+[hsltq])?
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: constant.language.mcnp
+
+  EMBED:
+    - match: (?i)^\s{0,4}(EMBED)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: EMBED-body
+
+  EMBED-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(debug)\s*(?:(=)\s*)?(echomesh)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(meshgeo)\s*(?:(=)\s*)?(lnk3dnt|abaqus|mcnpum|hdf5)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(overlap)\s*(?:(=)\s*)?(exit|entry|average)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(filetype)\s*(?:(=)\s*)?(ascii|binary)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(background|matcell|mgeoin|mgeout|meein|gmvfile|hdf5file|length|mcnpumfile)[=\s]
+      scope: variable.other.mcnp
+    - match: (?i)(elementchk|calc_vols)\s*(?:(=)\s*)?(yes|no)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  EMBEE:
+    - match: (?i)^\s{0,4}(EMBEE)(\d+)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: EMBEE-body
+
+  EMBEE-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(mtype)\s*(?:(=)\s*)?(flux|isotopic|population|reaction|source|tracks)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(embed|comment|energy|time|factor|list|mat){{break}}
+      scope: variable.other.mcnp
+    - match: (?i)(errors|atom)\s*(?:(=)\s*)?(yes|no)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  EMnTMnCFnSFnSDnTFn:
+    - match: (?i)^\s{0,4}(em|tm|cf|sf|sd|tf)(\d*[0124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  En:
+    - match: (?i)^\s{0,4}(E)(\d*[0124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: En-body
+
+  En-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s(nt|C){{break}}
+      scope: constant.language.mcnp
+
+  F5-array:
+    - match: (?i)^\s{0,4}([\*]*fi[prc])(\d*5)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+
+  F5-detector:
+    - match: (?i)^\s{0,4}(\**f)(\d*5)([xyz]?)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: keyword.other.mcnp
+        4: punctuation.separator.colon.mcnp
+      push: F5-detector-body
+
+  F5-detector-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\snd{{break}}
+      scope: constant.language.mcnp
+
+  FCn:
+    - match: (?i)^\s{0,4}(fc)(\d*[124-8])\s
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: FCn-body
+
+  FCn-body:
+    - meta_content_scope: string.unquoted.mcnp
+    - include: statement-end
+    - include: comments
+
+  FIELD:
+    - match: (?i)^\s{0,4}(field){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: FIELD-body
+
+  FIELD-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(gcut|gpar|grad|gsur)(?=[=\s])
+      scope: variable.other.mcnp
+
+  FMESHn:
+    - match: (?i)^\s{0,4}(\**fmesh)(\d*4|\d*01)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: FMESHn-body
+
+  FMESHn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    # cuv
+    - match: (?i)(smpl_ty)\s*(?:(=)\s*)?(syst|rand|regular)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # geometry
+    - match: (?i)(geom)\s*(?:(=)\s*)?(xyz|rzt|cyl|rec){{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # output
+    - match: (?i)(out)\s*(?:(=)\s*)?(colsci|col|cfsci|cf|ij|ik|jk|none|xdmf){{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # tally
+    - match: (?i)(tally)\s*(?:(=)\s*)?(fast_hist|hist|rma_batch|batch)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # type
+    - match: (?i)(type)\s*(?:(=)\s*)?(flux|source)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # variables
+    - match: (?i)(origin|axs|vec|[ijket]mesh|[ijket]ints|factor|tr|inc|kclear)\s*(?==?)
+      scope: variable.other.mcnp
+    # yesno
+    - match: (?i)([et]norm|voidoff|vtkout|prntcell)\s*(?:(=)\s*)?(yes|no)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  FMULT:
+    - match: (?i)^\s{0,4}(fmult){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: FMULT-body
+
+  FMULT-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(sfnu|width|sfyield|watt|method|data|shift)(?=[=\s])
+      scope: variable.other.mcnp
+
+  FMnFSnFUn:
+    - match: (?i)^\s{0,4}(fm|fs|fu)(\d*[124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: FMnFSnFUn-body
+
+  FMnFSnFUn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s(t|C)$
+      scope: constant.language.mcnp
+
+  FQn:
+    - match: (?i)^\s{0,4}(fq)(\d*[124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: FQn-body
+
+  FQn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s*(f|d|u|s|m|c|e|t)\s+
+      scope: constant.language.mcnp
+
+  FTn:
+    - match: (?i)^\s{0,4}(ft)(\d*[124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: FTn-body
+
+  FTn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(geb|frv|tmc|scx|elc|phl|cap|res|tag|roc|pds|fft|com|spm|mgc|fns|lcs)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(inc|icd|scd|ptt|let){{break}}
+      scope: constant.language.mcnp
+
+  Fn:
+    - match: (?i)^\s{0,4}(\**f)(\d*[1247])(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: Fn-body
+
+  Fn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s(T){{break}}
+      captures:
+        1: constant.language.mcnp
+    - match: (?i)(u)\s*(?==)
+      scope: variable.other.mcnp
+
+  Fn-plus:
+    - match: (?i)^\s{0,4}([+*]*f)(\d*[68])(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: Fn-plus-body
+
+  Fn-plus-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s(T){{break}}
+      captures:
+        1: constant.language.mcnp
+    - match: (?i)(u)\s*(?==)
+      scope: variable.other.mcnp
+
+  KCODE-KSRC-HSRC:
+    - match: (?i)^\s{0,4}(kcode|ksrc|hsrc){{break}}
+      scope: keyword.other.mcnp
+
+  KOPTS:
+    - match: (?i)^\s{0,4}(kopts){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: KOPTS-body
+
+  KOPTS-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(BLOCKSIZE|FMATSKIP|FMATNCYC|FMATSPACE|FMATN[xyz])(?=[=\s])
+      scope: variable.other.mcnp
+    - match: (?i)(kinetics|precursor|FMATCONVRG|FMATACCEL|FMATSRC|fmat)\s*(?:(=)\s*)?(yes|no)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(ksental)\s*(?:(=)\s*)?(mctal)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  KPERTn:
+    - match: (?i)^\s{0,4}(kpert)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: KPERTn-body
+
+  KPERTn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(cell|mat|rho|iso|rxn|erg)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(linear)\s*(?:(=)\s*)?(yes|no)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  KSENn:
+    - match: (?i)^\s{0,4}(ksen)(\d+)\s+(xs){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: constant.language.mcnp
+      push: KSENn-body
+
+  KSENn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(iso|rxn|mt|erg|ein|legendre|cos)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(constrain)\s*(?:(=)\s*)?(yes|no)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  MESH:
+    - match: (?i)^\s{0,4}(mesh){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: MESH-body
+
+  MESH-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(ref|origin|axs|vec|[ijk]mesh|[ijk]ints)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(geom)\s*(?:(=)\s*)?(xyz|rzt|cyl|rec|rpt|sph){{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  MPHYS:
+    - match: (?i)^\s{0,4}(MPHYS)\s+(on|off)?
+      captures:
+        1: keyword.other.mcnp
+        2: constant.language.mcnp
+
+  MSHMFn:
+    - match: (?i)^\s{0,4}(mshmf)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  MTn:
+    - match: (?i)^\s{0,4}(mt)(\d+)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: MTn-body
+
+  MTn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+
+  MXn:
+    - match: (?i)^\s{0,4}(mx)(\d+)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: MXn-body
+
+  MXn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)model{{break}}
+      scope: variable.other.mcnp
+
+  Mn:
+    - match: (?i)^\s{0,4}(m)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: Mn-body
+
+  Mn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    # default-libraries:
+    - match: (?i)([npehastd]lib|pnlib)[=\s]+(\d\d[a-z]){{break}}
+      captures:
+        1: variable.other.mcnp
+        2: constant.language.zaidlib.mcnp
+    # variables:
+    - match: (?i)(gas|[eh]step|cond|ref[is])(?=[=\s])
+      scope: variable.other.mcnp
+
+  NACT:
+    - match: (?i)^\s{0,4}(nact){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: NACT-body
+
+  NACT-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(cells|mat)\s*(?==?)
+      scope: variable.other.mcnp
+
+  NAMn:
+    - match: (?i)^\s{0,4}(nam)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: NAMn-body
+
+  NAMn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(norm|iso_filter|[xyze]bounds)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(output)\s*(?:(=)\s*)?(cdgs|spec|gpower|gpers|actual_gpers)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  NCMn:
+    - match: (?i)^\s{0,4}(ncm)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: NCMn-body
+
+  NCMn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(tally|iso_filter|[xyze]bounds)\s*(?==?)
+      scope: variable.other.mcnp
+
+  NOTRN:
+    - match: (?i)^\s{0,4}(notrn)$
+      scope: keyword.other.mcnp
+
+  OTFDB:
+    - match: (?i)^\s{0,4}(otfdb){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: OTFDB-body
+
+  OTFDB-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+
+  PDn:
+    - match: (?i)^\s{0,4}(pd)(\d*[124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  PERTn:
+    - match: (?i)^\s{0,4}(pert)(\d+)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: PERTn-body
+
+  PERTn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(cell|mat|rho|method|erg|rxn)\s*(?==?)
+      scope: variable.other.mcnp
+
+  PIKMT:
+    - match: (?i)^\s{0,4}(pikmt){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: PIKMT-body
+
+  PIKMT-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+
+  PIO:
+    - match: (?i)(PIO)\s+(on|no)?{{break}}
+      captures:
+        1: variable.control.pio.mcnp
+        2: constant.language.mcnp
+
+  PTRAC:
+    - match: (?i)^\s{0,4}(ptrac){{break}}
+      captures:
+        1: keyword.control.ptrac.mcnp
+      push: PTRAC-body
+
+  PTRAC-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    # coinc
+    - match: (?i)(coinc)\s*(?:(=)\s*)?(col|lin)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # core
+    - match: (?i)(buffer|flushnps|max|meph|filter|type|nps|cell|surface|tally|value)\s*(?==?)
+      scope: variable.other.mcnp
+    # event
+    - match: (?i)(event)\s*(?:(=)\s*)?(src|bnk|sur|col|ter|cap)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # file
+    - match: (?i)(file)\s*(?:(=)\s*)?(hdf5|asc|bin|aov|bov){{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # write
+    - match: (?i)(write)\s*(?:(=)\s*)?(pos|all)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+
+  RAND:
+    - match: (?i)^\s{0,4}(rand){{break}}
+      captures:
+        1: keyword.control.rand.mcnp
+      push: RAND-body
+
+  RAND-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(gen|seed|stride|hist)\s*(?==?)
+      scope: variable.other.mcnp
+
+  READ:
+    - match: (?i)^\s{0,4}(read){{break}}
+      captures:
+        1: keyword.control.read.mcnp
+      push: READ-body
+
+  READ-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(noecho|echo){{break}}
+      scope: constant.language.mcnp
+    - match: (?i)(file|decode|encode)(?=[=\s])
+      scope: variable.other.mcnp
+
+  SCn:
+    - match: (?i)^\s{0,4}(sc)(\d+)(\s.*$)?
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: string.mcnp
+
+  SDDR:
+    - match: (?i)^\s{0,4}(sddr){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: SDDR-body
+
+  SDDR-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(contrib)\s*(?:(=)\s*)?(zaid|cell|voxel)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    - match: (?i)(srctme)(?=[=\s])
+      scope: variable.other.mcnp
+
+  SDEF:
+    - match: (?i)^\s{0,4}(sdef){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: SDEF-body
+
+  SDEF-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\b(fcel|ftr|ferg)(?=[=\s])
+      scope: constant.language.mcnp
+    - match: (?i)\b(cel|sur|erg|ftme|tme|dir|vec|nrm|pos|rad|ext|axs|[xyz]|ccc| ara|wgt|tr|eff|par|dat|loc|bem|bap)(?=[=\s])
+      scope: variable.other.mcnp
+    - match: =
+      scope: keyword.operator.assignment.mcnp
+
+  SIn:
+    - match: (?i)^\s{0,4}(si)(\d+)\s+([hals])?
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: constant.language.mcnp
+
+  SPDTL:
+    - match: (?i)(SPDTL)\s+(force|off)?\s?
+      captures:
+        1: variable.other.mcnp
+        2: constant.language.mcnp
+
+  SPn-SBn:
+    - match: (?i)^\s{0,4}(s[pb])(\d+)(\s+[dcvw])?(s+\-\d+\s)?
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: constant.language.mcnp
+
+  SSR:
+    - match: (?i)^\s{0,4}(ssr){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: SSR-body
+
+  SSR-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s*(old|cel|new|pty|col|wgt|tr|psc|axs|ext|poa|bcw)(?=[=\s])
+      scope: variable.other.mcnp
+
+  SSW:
+    - match: (?i)^\s{0,4}(ssw){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: SSW-body
+
+  SSW-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s*(sym|pty|cel)(?=[=\s])
+      scope: variable.other.mcnp
+
+  STOP:
+    - match: (?i)^\s{0,4}(stop){{break}}
+      captures:
+        1: keyword.control.stop.mcnp
+      push: STOP-body
+
+  STOP-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(nps|ctme)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(f)(\d+)\s*(?==?)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  TOTNU:
+    - match: (?i)^\s{0,4}(totnu)\s+(no)?
+      captures:
+        1: keyword.other.mcnp
+        2: constant.language.mcnp
+
+  TROPT:
+    - match: (?i)^\s{0,4}(tropt){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: TROPT-body
+
+  TROPT-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    # eloss
+    - match: (?i)(eloss)\s*(?:(=)\s*)?(off|strag1|csda)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # mcscat
+    - match: (?i)(mcscat)\s*(?:(=)\s*)?(off|fnal[12]|gaussian)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # mescat
+    - match: (?i)(mescat|nescat)\s*(?:(=)\s*)?(off|on)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # nreact
+    - match: (?i)(nreact)\s*(?:(=)\s*)?(off|on|atten|remove)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: keyword.operator.assignment.mcnp
+        3: constant.language.mcnp
+    # variables
+    - match: (?i)(genxs)(?=[=\s])
+      scope: variable.other.mcnp
+
+  TRn:
+    - match: (?i)^\s{0,4}(\*{0,1}tr)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  Tn:
+    - match: (?i)^\s{0,4}(T)(\d*[124-8]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: Tn-body
+
+  Tn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)\s*(cbeg|cfrq|cofi|coni|csub|cend)(?=[=\s])
+      scope: variable.other.mcnp
+    - match: (?i)\s(nt|C){{break}}
+      scope: constant.language.mcnp
+
+  VAR:
+    - match: (?i)^\s{0,4}(var)\s+(on|off)?{{break}}
+      captures:
+        1: variable.other.mcnp
+        2: constant.language.mcnp
+
+  VOL:
+    - match: (?i)^\s{0,4}(vol){{break}}
+      captures:
+        1: keyword.other.mcnp
+      push: VOL-body
+
+  VOL-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(no){{break}}
+      scope: constant.language.mcnp
+
+  XMESH1:
+    - match: (?i)^\s{0,4}([rcs]mesh)(\d*1)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: XMESH1-body
+
+  XMESH1-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(mfact|trans)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(traks|flux|popul|pedep){{break}}
+      scope: constant.language.mcnp
+
+  XMESH2:
+    - match: (?i)^\s{0,4}([rcs]mesh)(\d*2){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: XMESH2-body
+
+  XMESH2-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(trans)\s*(?==?)
+      scope: variable.other.mcnp
+
+  XMESH3:
+    - match: (?i)^\s{0,4}([rcs]mesh)(\d*3){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: XMESH3-body
+
+  XMESH3-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(mfact|trans)\s*(?==?)
+      scope: variable.other.mcnp
+    - match: (?i)(total|de/dx|recol|tlest|edlct){{break}}
+      scope: constant.language.mcnp
+
+  XMESH4:
+    - match: (?i)^\s{0,4}([rcs]mesh)(\d*4)(:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: punctuation.separator.colon.mcnp
+      push: XMESH4-body
+
+  XMESH4-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+    - match: (?i)(trans)\s*(?==?)
+      scope: variable.other.mcnp
+
+  XSn:
+    - match: (?i)^\s{0,4}(xs)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      push: XSn-body
+
+  XSn-body:
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: operators
+
+  ctrl-cardname:
+    - match: (?i)^\s{0,4}(nps|ctme|print|talnp|prdmp|mcplot|histp|dbcn|lost|idum|rdum|files){{break}}
+      captures:
+        1: keyword.control.cardname.mcnp
+
+  geometry-cardname:
+    - match: (?i)^\s{0,4}(area|u|lat|uran){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  geometry-cardname-numbered:
+    - match: (?i)^\s{0,4}(embeb|embem|embtb|embtm|embde|embdf)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  geometry-cardname-starred:
+    - match: (?i)^\s{0,4}(\*?fill){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  material-cardname:
+    - match: (?i)^\s{0,4}(nonu|awtab|void|mgopt){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  physics-cardname:
+    - match: (?i)^\s{0,4}(mode|lca|lcb|lcc|lea|leb|cosyp|cosy|bflcl){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  physics-cardname-p:
+    - match: (?i)^\s{0,4}(phys|cut|elpt|tmp|thtme|unc)(?=:)
+      captures:
+        1: keyword.other.mcnp
+
+  tmesh-markers:
+    - match: (?i)^\s{0,4}(TMESH|ENDMD){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  tmesh-numbered:
+    - match: (?i)^\s{0,4}(cor[abc]|ergsh)(\d*[1-4]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  vertical-input:
+    - match: (?i)^\s{0,4}(#){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  vr-cardname:
+    - match: (?i)^\s{0,4}(wwg|pwt){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  vr-cardname-n:
+    - match: (?i)^\s{0,4}(dxc|bbrem)(\d+){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  vr-cardname-n-p:
+    - match: (?i)^\s{0,4}(WWN\d+)(?=\:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  vr-cardname-p:
+    - match: (?i)^\s{0,4}(imp|ww[etp]|wwg[et]|[et]splt|ext|vect|fcl|dxt|spabi)(?=\:)
+      captures:
+        1: keyword.other.mcnp
+
+  statement-end:
+    - match: ^(?:\n|(?=^\s{0,4}(?![cC]\s)[*+]*\w))
+      pop: 1
+
+###[ LITERALS ]################################################################
+
+  numbers:
+    # integers with zaidlib extension
+    - match: ([-+]|\b)(\d+)(\.\d{1,2}(?!e[-\d])[a-z])
+      scope: meta.number.integer.decimal.mcnp
+      captures:
+        1: keyword.operator.arithmetic.mcnp
+        2: constant.numeric.value.mcnp
+        3: constant.language.zaidlib.mcnp
+    - match: (?i)(\.\d{1,2}[a-z]){{break}}
+      scope: constant.language.zaidlib.mcnp
+    # floats
+    - match: ([-+]|\b)(\d*(\.)\d+(?:[eE][-+]?\d+)?|\d+[eE][-+]?\d+)
+      scope: meta.number.float.decimal.mcnp
+      captures:
+        1: keyword.operator.arithmetic.mcnp
+        2: constant.numeric.value.mcnp
+        3: punctuation.separator.decimal.mcnp
+        4: constant.numeric.suffix.mcnp
+    # integers
+    - match: ([-+]|\b)(\d+)
+      scope: meta.number.integer.decimal.mcnp
+      captures:
+        1: keyword.operator.arithmetic.mcnp
+        2: constant.numeric.value.mcnp
+
+  operators:
+    - match: =
+      scope: keyword.operator.assignment.mcnp
+    - match: ':'
+      scope: punctuation.separator.colon.mcnp

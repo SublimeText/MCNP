@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[mgopt   ${1:F}     \$ Forward or adjoint problem [F, A]
+        ${2:n}     \$ Total number of energy groups
+        ${3:0}     \$ Weight window usage
+        ${4:0}     \$ Adjoint biasing for adjoint problems
+        ${5:0}     \$ Reference cell for generated weight windows
+        ${6:0}     \$ Normalization value for generated weight windows
+        ${7:1000}  \$ Compression limit for generated weight windows]]></content>
+	<tabTrigger>MGOPT</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>multigroup adjoint transport options</description>
+</snippet>

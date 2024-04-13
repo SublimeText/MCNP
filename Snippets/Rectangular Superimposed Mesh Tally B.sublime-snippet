@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[fc4    Rectangular mesh tally
+fmesh4:${1:n}
+        origin= ${2:0.0\ 0.0\ 0.0}         \$ Coordinates (x,y,z) of mesh origin
+        geom  = ${3:xyz}                 \$ Mesh geometry
+        out   = ${4:xdmf}                \$ Output format
+        imesh = ${5:10}      iints = ${6:5}   \$ Coarse mesh points in X
+        jmesh = ${7:10}      jints = ${8:5}   \$ Coarse mesh points in Y
+        kmesh = ${9:10}      kints = ${10:5}   \$ Coarse mesh points in Z
+        emesh = ${11:1.0e36}              \$ Energy bin upper edges (MeV)]]></content>
+	<tabTrigger>FMESHn (rec)</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Superimposed Mesh Tally B</description>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[RCC       \$ Macrobody: Right Circular Cylinder
+        ${1:x} ${2:y} ${3:z}     \$ (x,y,z) coordinates of the center of the cylinder base
+        ${4:h1} ${5:h2} ${6:h3}  \$ Axis vector for orientation and cylinder height
+        ${7:r}         \$ Radius of cylinder]]></content>
+	<tabTrigger>RCC</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>RCC macrobody</description>
+</snippet>

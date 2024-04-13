@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[lcb     ${1:3500}    \$ Nucleons, CEM/Bertini/INCL INC used below [MeV]
+        ${2:3500}    \$ Nucleons, LAQGSM03.03 high-energy generator above [MeV]
+        ${3:2500}    \$ Pions, CEM/Bertini/INCL INC used below [MeV]
+        ${4:2500}    \$ Pions, LAQGSM03.03 high-energy generator above [MeV]
+        ${5:800}     \$ ISABEL INC model used below [MeV]
+        ${6:800}     \$ An appropriate model used above [MeV]
+        ${7:-1.0}    \$ Cutoff kinetic energy
+        ${8:-1.0}    \$ Max correction for mass-energy balancing in cascade]]></content>
+	<tabTrigger>LCB</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>physics models options</description>
+</snippet>

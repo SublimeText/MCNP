@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[tmesh   \$ ------ TMESH tallies start ------
+c
+${1:c RMESH/CMESH/SMESH tallies here}
+c
+endmd   \$ ------ TMESH tallies end ------]]></content>
+	<tabTrigger>TMESH</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>TMESH Mesh Tally Markers</description>
+</snippet>

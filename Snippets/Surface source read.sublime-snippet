@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[ssr     old = ${1:c1\ c2...}    \$ Use all surfaces in the original calculation if blank
+        cel = ${2:s1\ s2...}    \$ Use all cells in the original calculation if blank
+        new = ${3:sa1\ sa2...}  \$ Assign new surfaces, use OLD list if blank
+        pty = ${4:p1\ p2...}    \$ Particle types for which the tracks are to be read
+        col = ${5:0}           \$ Collision option flag
+        wgt = ${6:1.0}         \$ Multiply particle weights by the constant
+        tr  = ${7:n}           \$ Transformation number/ distribution number
+        psc = ${8:c}           \$ Constant used in PSC evaluation]]></content>
+	<tabTrigger>SSR</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Surface source write</description>
+</snippet>

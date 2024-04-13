@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[tr${1:0}     ${2:0 0 0}   \$ displacement vector
+        ${3:1 0 0}   \$ xx' yx' zx'
+        ${4:0 1 0}   \$ xy' yy' zy'
+        ${5:0 0 1}   \$ xz' yz' zz'
+        ${6:1}       \$ defined in main (1) or auxiliary system (-1)]]></content>
+	<tabTrigger>TR</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>Coordinate Transformation</description>
+</snippet>

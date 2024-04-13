@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[lca     ${1:2}           \$ Controls elastic scattering
+        ${2:ipreq}       \$ Controls pre-equilibrium model
+        ${3:iexisa}      \$ Controls model choice
+        ${4:ichoic}      \$ Control ISABEL intranuclear cascade model
+        ${5:1}           \$ Controls Coulomb barrier for incident charged particles
+        ${6:1}           \$ Subtract nuclear recoil energy to get excitation energy
+        ${7:0}           \$ Controls pion termination treatment
+        ${8:1}           \$ Particle transport options
+        ${9:1}           \$ Choose alternative physics model
+        ${10:0}           \$ Choose light ion and nucleon physics modules
+        ${11:nevtype}     \$ Choose number of evaporation particles modeled by GEM2]]></content>
+	<tabTrigger>LCA</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>physics models options</description>
+</snippet>

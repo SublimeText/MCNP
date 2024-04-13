@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[WED          \$ Macrobody: Wedge
+        ${1:x} ${2:y} ${3:z}        \$ (x,y,z) coordinates of wedge vertex
+        ${4:v1x} ${5:v1y} ${6:v1z}  \$ Vector of first side of triangular base
+        ${7:v2x} ${8:v2y} ${9:v2z}  \$ Vector of second side of triangular base
+        ${10:v3x} ${11:v3y} ${12:v3z}  \$ Height vector]]></content>
+	<tabTrigger>WED</tabTrigger>
+	<scope>source.mcnp</scope>
+	<description>WED macrobody</description>
+</snippet>
