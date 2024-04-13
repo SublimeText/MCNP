@@ -15,8 +15,8 @@ variables:
 contexts:
   main:
     - include: comments
-    - include: surface-cards
     - include: cell-cards
+    - include: surface-cards
     - include: data-cards
     - include: numbers
     - include: operators
@@ -161,32 +161,58 @@ contexts:
 ###[ CELL CARDS ]##############################################################
 
   cell-cards:
-    # like-cell-cards
-    - match: (?i)^\s{0,4}(\d+)\s+(like)\s+\d+\s+(but){{break}}
+    # Form 2: j LIKE n BUT list
+    - match: (?i)^\s{0,4}(\d+)\s+(like)\s+(\d+)\s+(but){{break}}
+      scope: meta.cell.mcnp
       captures:
-        1: keyword.cellnumber.mcnp
-        2: constant.language.mcnp
-        3: constant.language.mcnp
+        1: entity.name.cell.mcnp
+        2: keyword.other.mcnp
+        3: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        4: keyword.other.mcnp
       push: cell-body
-    # material-cell-cards
-    - match: (?i)^\s{0,4}(\d+)\s+(?=[1-9]\d*\s+\S+)
+    # Form 1: j m d geom params
+    # does not look like a numberd surface
+    - match: (?i)^\s{0,4}(\d+)\s+(?=\d+(?!\s+[a-z]))
+      scope: meta.cell.mcnp
       captures:
-        1: keyword.cellnumber.mcnp
-      push: cell-body
-    # void-cell-cards
-    - match: (?i)^\s{0,4}(\d+)\s+(0){{break}}
-      captures:
-        1: keyword.cellnumber.mcnp
-        2: constant.numeric.cellmaterial.mcnp
+        1: entity.name.cell.mcnp
       push: cell-body
 
   cell-body:
+    - meta_content_scope: meta.cell.mcnp
     - include: statement-end
     - include: comments
     - include: numbers
-    - include: operators
-    - match: (?i:IMP|VOL|PWT|EXT|FCL|WWN|DXC|NONU|PD|TMP|TRCL|LAT|FILL|ELPT|COSY|BFLCL|UNC|U)\b
-      scope: variable.other.mcnp
+    - include: cell-groups
+    - include: cell-operators
+    - match: (?i:IMP|VOL|PWT|EXT|FCL|WWN|DXC|NONU|PD|TMP|TRCL|LAT|FILL|ELPT|COSY|BFLCL|UNC|U)(?i:(:)[np]?)?
+      scope: variable.parameter.mcnp
+      captures:
+        1: punctuation.separator.colon.mcnp
+
+  cell-groups:
+    - match: \(
+      scope: punctuation.section.group.begin.mcnp
+      push: cell-group-body
+
+  cell-group-body:
+    - meta_scope: meta.group.mcnp
+    - match: \)
+      scope: punctuation.section.group.begin.mcnp
+      pop: 1
+    - include: statement-end
+    - include: comments
+    - include: numbers
+    - include: cell-groups
+    - include: cell-operators
+
+  cell-operators:
+    - match: =
+      scope: keyword.operator.assignment.mcnp
+    - match: \#
+      scope: keyword.operator.complement.mcnp
+    - match: ':'
+      scope: keyword.operator.union.mcnp
 
 ###[ SURFACE CARDS ]###########################################################
 

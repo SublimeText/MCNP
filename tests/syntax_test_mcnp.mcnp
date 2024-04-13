@@ -8,41 +8,98 @@ $ comment
 $ <- comment.line.mcnp punctuation.definition.comment.mcnp
 $^^^^^^^^ comment.line.mcnp - punctuation
 
-ACT dnbias $ comment
-$ <- keyword.other.mcnp
-$^^ keyword.other.mcnp
-$   ^^^^^^ variable.other.mcnp
-$          ^^^^^^^^^ comment.line.mcnp
-
-    ACT dnbias $ comment
-$   ^^^ keyword.other.mcnp
-$       ^^^^^^ variable.other.mcnp
-$              ^^^^^^^^^ comment.line.mcnp
-
-     ACT dnbias $ comment
-$    ^^^ - keyword
-$        ^^^^^^ - variable
-$               ^^^^^^^^^ comment.line.mcnp
-
-bfld4 type const
-$ <- keyword.other.mcnp
-$^^^ keyword.other.mcnp
-$   ^ constant.numeric.value.mcnp
-$     ^^^^ variable.other.mcnp
-$          ^^^^^ constant.language.mcnp
-
-bfld4 type = const
-$ <- keyword.other.mcnp
-$^^^ keyword.other.mcnp
-$   ^ constant.numeric.value.mcnp
-$     ^^^^ variable.other.mcnp
-$          ^ keyword.operator.assignment.mcnp
-$            ^^^^^ constant.language.mcnp
-
 c Cell Cards
-1  100 -0.0014 -7               imp:n=1 tmp=2.53e-08
-2  200 -7.86   -8               imp:n=1 tmp=2.53e-08
-4  0           -1:2:3:-4:5:-6
+
+1 0 -1 2 -4   $ definition of cell 3
+$ <- meta.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$   ^^ meta.number.integer.decimal.mcnp
+$   ^ keyword.operator.arithmetic.mcnp
+$    ^ constant.numeric.value.mcnp
+$      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$        ^ meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
+$         ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+2 0 #1      $ equivalent to each of the next 2 lines
+$ <- meta.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$   ^ keyword.operator.complement.mcnp
+$    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+2 0 #(-1 2 -4)
+$ <- meta.cell.mcnp entity.name.cell.mcnp
+$^^^^ meta.cell.mcnp - meta.group
+$    ^^^^^^^^^ meta.cell.mcnp meta.group.mcnp
+$ ^ constant.numeric.value.mcnp
+$   ^ keyword.operator.complement.mcnp
+$    ^ punctuation.section.group.begin.mcnp
+$     ^^ meta.group.mcnp meta.number.integer.decimal.mcnp
+$     ^ keyword.operator.arithmetic.mcnp
+$      ^ constant.numeric.value.mcnp
+$        ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$          ^^ meta.number.integer.decimal.mcnp
+$          ^ keyword.operator.arithmetic.mcnp
+$           ^ constant.numeric.value.mcnp
+$            ^ punctuation.section.group.begin.mcnp
+
+2 0 (+1 : -2 : +4)
+$ <- meta.cell.mcnp entity.name.cell.mcnp
+$^^^ meta.cell.mcnp - meta.group
+$    ^^^^^^^^^^^^^ meta.cell.mcnp meta.group.mcnp
+$ ^ constant.numeric.value.mcnp
+$   ^ punctuation.section.group.begin.mcnp
+$    ^^ meta.group.mcnp meta.number.integer.decimal.mcnp
+$    ^ keyword.operator.arithmetic.mcnp
+$     ^ constant.numeric.value.mcnp
+$       ^ keyword.operator.union.mcnp
+$         ^^ meta.number.integer.decimal.mcnp
+$         ^ keyword.operator.arithmetic.mcnp
+$          ^ constant.numeric.value.mcnp
+$            ^ keyword.operator.union.mcnp
+$              ^ keyword.operator.arithmetic.mcnp
+$               ^ constant.numeric.value.mcnp
+$                ^ punctuation.section.group.begin.mcnp
+
+3  100 -0.0014 -7 imp:n=1 tmp=2.53e-08
+$ <- meta.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$  ^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$      ^^^^^^^ meta.number.float.decimal.mcnp
+$      ^ keyword.operator.arithmetic.mcnp
+$       ^^^^^^ constant.numeric.value.mcnp
+$              ^^ meta.number.integer.decimal.mcnp
+$                 ^^^^^ variable.parameter.mcnp
+$                      ^ keyword.operator.assignment.mcnp
+$                       ^ constant.numeric.value.mcnp
+$                         ^^^ variable.parameter.mcnp
+$                            ^ keyword.operator.assignment.mcnp
+$                             ^^^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+
+4 LIKE 2 BUT IMP:N=10 TRCL=1
+$ <- meta.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ ^^^^ keyword.other.mcnp
+$      ^ constant.numeric.value.mcnp
+$        ^^^ keyword.other.mcnp
+$            ^^^^^ variable.parameter.mcnp
+$               ^ punctuation.separator.colon.mcnp
+$                 ^ keyword.operator.assignment.mcnp
+$                  ^^ constant.numeric.value.mcnp
+$                     ^^^^ variable.parameter.mcnp
+$                         ^ keyword.operator.assignment.mcnp
+$                          ^ constant.numeric.value.mcnp
+
+     5 LIKE 2 BUT IMP=0
+$ ^^^^^^^^^^^^^^^^^^^^^^ - meta.cell
+$    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$      ^^^^ - keyword
+$           ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$             ^^^ - keyword
+$                 ^^^ - variable
+$                    ^ keyword.operator.assignment.mcnp
+$                     ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 c Surface Cards
 
@@ -165,3 +222,35 @@ $               ^^^ constant.language.mcnp
 $      ^^^ variable.other.mcnp
 $             ^ keyword.operator.assignment.mcnp
 $               ^^^^ constant.language.mcnp
+
+
+ACT dnbias $ comment
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+$          ^^^^^^^^^ comment.line.mcnp
+
+    ACT dnbias $ comment
+$   ^^^ keyword.other.mcnp
+$       ^^^^^^ variable.other.mcnp
+$              ^^^^^^^^^ comment.line.mcnp
+
+     ACT dnbias $ comment
+$    ^^^ - keyword
+$        ^^^^^^ - variable
+$               ^^^^^^^^^ comment.line.mcnp
+
+bfld4 type const
+$ <- keyword.other.mcnp
+$^^^ keyword.other.mcnp
+$   ^ constant.numeric.value.mcnp
+$     ^^^^ variable.other.mcnp
+$          ^^^^^ constant.language.mcnp
+
+bfld4 type = const
+$ <- keyword.other.mcnp
+$^^^ keyword.other.mcnp
+$   ^ constant.numeric.value.mcnp
+$     ^^^^ variable.other.mcnp
+$          ^ keyword.operator.assignment.mcnp
+$            ^^^^^ constant.language.mcnp
