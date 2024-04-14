@@ -8,6 +8,84 @@ $ comment
 $ <- comment.line.mcnp punctuation.definition.comment.mcnp
 $^^^^^^^^ comment.line.mcnp - punctuation
 
+c Numbers
+
+  1.000 -1.000 +1.000
+$ ^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$  ^ punctuation.separator.decimal.mcnp
+$      ^ - meta.number - constant
+$       ^^^^^^ meta.number.float.decimal.mcnp
+$       ^ keyword.operator.arithmetic.mcnp
+$        ^^^^^ constant.numeric.value.mcnp
+$         ^ punctuation.separator.decimal.mcnp
+$             ^ - meta.number - constant
+$              ^^^^^^ meta.number.float.decimal.mcnp
+$              ^ keyword.operator.arithmetic.mcnp
+$               ^^^^^ constant.numeric.value.mcnp
+$                ^ punctuation.separator.decimal.mcnp
+$                    ^ - meta.number - constant
+
+  1.23e4 1.23e-4 1.23e+4 -1.23e4 -1.23e-4 -1.23e+4 +1.23e4 +1.23e-4 +1.23e+4
+$ ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$  ^ punctuation.separator.decimal.mcnp
+$       ^ - meta.number - constant
+$        ^^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$         ^ punctuation.separator.decimal.mcnp
+$               ^ - meta.number - constant
+$                ^^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                 ^ punctuation.separator.decimal.mcnp
+$                       ^ - meta.number - constant
+$                        ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                         ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                          ^ punctuation.separator.decimal.mcnp
+$                               ^ - meta.number - constant
+$                                ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                                 ^^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                  ^ punctuation.separator.decimal.mcnp
+$                                        ^ - meta.number - constant
+$                                         ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                                          ^^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                           ^ punctuation.separator.decimal.mcnp
+$                                                 ^ - meta.number - constant
+
+  123e4 123e-4 123e+4 -123e4 -123e-4 -123e+4 +123e4 +123e-4 +123e+4
+$ ^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$      ^ - meta.number - constant
+$       ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$             ^ - meta.number - constant
+$              ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                    ^ - meta.number - constant
+$                     ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                      ^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                           ^ - meta.number - constant
+$                            ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                             ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                   ^ - meta.number - constant
+$                                    ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                                     ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                           ^ - meta.number - constant
+$                                            ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                                             ^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                                  ^ - meta.number - constant
+$                                                   ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                                                    ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                                          ^ - meta.number - constant
+$                                                           ^ meta.number.float.decimal.mcnp keyword.operator.arithmetic.mcnp
+$                                                            ^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$                                                                  ^ - meta.number - constant
+
+  123.4e -123.4a +123.4z
+$ ^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$    ^^^ constant.language.zaidlib.mcnp
+$        ^^^^ meta.number.integer.decimal.mcnp
+$        ^ keyword.operator.arithmetic.mcnp
+$         ^^^ constant.numeric.value.mcnp
+$            ^^^ constant.language.zaidlib.mcnp
+$                ^^^^ meta.number.integer.decimal.mcnp
+$                ^ keyword.operator.arithmetic.mcnp
+$                 ^^^ constant.numeric.value.mcnp
+$                    ^^^ constant.language.zaidlib.mcnp
+
 c Cell Cards
 
 1 0 -1 2 -4   $ definition of cell 3

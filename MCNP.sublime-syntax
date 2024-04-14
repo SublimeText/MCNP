@@ -12,6 +12,11 @@ file_extensions:
 variables:
   break: (?!\S)
 
+  # numbers
+  exponent: (?:[eE][-+]?\d+)
+  float: ([-+]|\b)(\d*(\.)\d+{{exponent}}?|\d+{{exponent}})\b
+  integer: ([-+]|\b)(\d+)\b
+
 contexts:
   main:
     - include: comments
@@ -1402,29 +1407,21 @@ contexts:
 ###[ LITERALS ]################################################################
 
   numbers:
-    # integers with zaidlib extension
-    - match: ([-+]|\b)(\d+)(\.\d{1,2}(?!e[-\d])[a-z])
-      scope: meta.number.integer.decimal.mcnp
-      captures:
-        1: keyword.operator.arithmetic.mcnp
-        2: constant.numeric.value.mcnp
-        3: constant.language.zaidlib.mcnp
-    - match: (?i)(\.\d{1,2}[a-z]){{break}}
-      scope: constant.language.zaidlib.mcnp
     # floats
-    - match: ([-+]|\b)(\d*(\.)\d+(?:[eE][-+]?\d+)?|\d+[eE][-+]?\d+)
+    - match: '{{float}}'
       scope: meta.number.float.decimal.mcnp
       captures:
         1: keyword.operator.arithmetic.mcnp
         2: constant.numeric.value.mcnp
         3: punctuation.separator.decimal.mcnp
-        4: constant.numeric.suffix.mcnp
     # integers
-    - match: ([-+]|\b)(\d+)
+    - match: '{{integer}}'
       scope: meta.number.integer.decimal.mcnp
       captures:
         1: keyword.operator.arithmetic.mcnp
         2: constant.numeric.value.mcnp
+    - match: \.\d{1,2}[[:alpha:]]\b
+      scope: constant.language.zaidlib.mcnp
 
   operators:
     - match: =
