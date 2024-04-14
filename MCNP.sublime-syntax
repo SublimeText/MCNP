@@ -181,7 +181,26 @@ contexts:
       scope: meta.cell.mcnp
       captures:
         1: entity.name.cell.mcnp
-      push: cell-body
+      push:
+        - cell-body
+        - cell-material
+
+  cell-material:
+    - match: 0{{break}}
+      scope: meta.material.void.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+      pop: 1
+    - match: (\d{1,8})(\s+)({{float}})
+      captures:
+        1: meta.material.other.id.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        2: meta.material.other.mcnp
+        3: meta.material.other.density.mcnp meta.number.float.decimal.mcnp
+        4: keyword.operator.arithmetic.mcnp
+        5: constant.numeric.value.mcnp
+        6: punctuation.separator.decimal.mcnp
+      pop: 1
+    - include: comments
+    - include: statement-end
+    - include: else-pop
 
   cell-body:
     - meta_content_scope: meta.cell.mcnp
@@ -1428,3 +1447,9 @@ contexts:
       scope: keyword.operator.assignment.mcnp
     - match: ':'
       scope: punctuation.separator.colon.mcnp
+
+###[ PROTOTYPES ]##############################################################
+
+  else-pop:
+    - match: (?=\S)
+      pop: 1
