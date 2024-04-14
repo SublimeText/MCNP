@@ -1419,10 +1419,6 @@ contexts:
       captures:
         1: keyword.other.mcnp
 
-  statement-end:
-    - match: ^(?:\n|(?=^\s{0,4}(?![cC]\s)[*+]*\w))
-      pop: 1
-
 ###[ LITERALS ]################################################################
 
   numbers:
@@ -1452,4 +1448,11 @@ contexts:
 
   else-pop:
     - match: (?=\S)
+      pop: 1
+
+  statement-end:
+    # statements end with
+    # a) empty line
+    # b) any commands except line comments
+    - match: ^(?=\s*$|\s{0,4}(?:[*+]+|(?![cC]\s))[[:alnum:]])
       pop: 1
