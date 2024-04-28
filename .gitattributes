@@ -1,6 +1,7 @@
 /.github/           export-ignore
 /.gitattributes     export-ignore
 /.gitignore         export-ignore
+/tests/				export-ignore
 *.cmd				export-ignore
 *.mcnp				export-ignore
 *.png               export-ignore
