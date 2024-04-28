@@ -258,7 +258,6 @@ contexts:
 
   ACT-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(dg)(?:(?:\s*(=))?\s*(lines|mg|none))?{{break}}
       captures:
         1: variable.other.mcnp
@@ -281,6 +280,7 @@ contexts:
         3: constant.language.mcnp
     - match: (?i)\b(thresh|dnbias|nap|d[ng]eb|pecut|hlcut){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   BFLDn:
     - match: (?i)^\s{0,4}(bfld)(\d+){{break}}
@@ -291,7 +291,6 @@ contexts:
 
   BFLDn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(field|vec|axs|refpnt|mxdeflc|maxstep|ffedges){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(type)(?:\s*(=))?(?:\s*(const|quad|quadff){{break}})?
@@ -299,6 +298,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   BURN:
     - match: (?i)^\s{0,4}(burn){{break}}
@@ -308,11 +308,11 @@ contexts:
 
   BURN-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(time|pftrac|power|omit|afmin|bopt|swapb|matvol|matmod|mat|PFRAC){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(nostats){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   Cn:
     - match: (?i)^\s{0,4}([+*]*C)(\d*[124-8]){{break}}
@@ -323,9 +323,9 @@ contexts:
 
   Cn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)[tC]{{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   DAWWG:
     - match: (?i)^\s{0,4}(DAWWG){{break}}
@@ -335,9 +335,9 @@ contexts:
 
   DAWWG-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(points|xsec|tally|block){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   DBRC:
     - match: (?i)^\s{0,4}(dbrc){{break}}
@@ -347,9 +347,9 @@ contexts:
 
   DBRC-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(endf|emax|isos){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   DDn:
     - match: (?i)^\s{0,4}(dd)(\d*){{break}}
@@ -366,9 +366,9 @@ contexts:
 
   DECMn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(cells|mat|rho){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   DECTRn:
     - match: (?i)^\s{0,4}(dectr)(\d+){{break}}
@@ -385,11 +385,11 @@ contexts:
 
   DEnDFn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(ic|iu|fac){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(log|lin){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   DMn:
     - match: (?i)^\s{0,4}(DM)(\d+){{break}}
@@ -431,7 +431,6 @@ contexts:
 
   EMBED-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(debug)(?:(?:\s*(=))?\s*(echomesh))?{{break}}
       captures:
         1: variable.other.mcnp
@@ -459,6 +458,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   EMBEE:
     - match: (?i)^\s{0,4}(EMBEE)(\d+){{break}}
@@ -469,7 +469,6 @@ contexts:
 
   EMBEE-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(mtype)(?:(?:\s*(=))?\s*(flux|isotopic|population|reaction|source|tracks))?{{break}}
       captures:
         1: variable.other.mcnp
@@ -482,6 +481,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   EMnTMnCFnSFnSDnTFn:
     - match: (?i)^\s{0,4}(em|tm|cf|sf|sd|tf)(\d*[0124-8]){{break}}
@@ -498,9 +498,9 @@ contexts:
 
   En-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(nt|C){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   FCn:
     - match: (?i)^\s{0,4}(fc)(\d*[124-8]){{break}}
@@ -521,9 +521,9 @@ contexts:
 
   FIELD-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(gcut|gpar|grad|gsur){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   FMESHn:
     - match: (?i)^\s{0,4}([+*]*fmesh)(\d*4|\d*01){{break}}
@@ -534,7 +534,6 @@ contexts:
 
   FMESHn-body:
     - include: statement-end
-    - include: expressions
     # cuv
     - match: (?i)\b(smpl_ty)(?:(?:\s*(=))?\s*(syst|rand|regular))?{{break}}
       captures:
@@ -574,6 +573,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   FMULT:
     - match: (?i)^\s{0,4}(fmult){{break}}
@@ -583,9 +583,9 @@ contexts:
 
   FMULT-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(sfnu|width|sfyield|watt|method|data|shift){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   FMnFSnFUn:
     - match: (?i)^\s{0,4}([+*]*f[msu])(\d*[124-8]){{break}}
@@ -596,9 +596,9 @@ contexts:
 
   FMnFSnFUn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b[tC]{{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   FQn:
     - match: (?i)^\s{0,4}([+*]*fq)(\d*[124-8]){{break}}
@@ -609,9 +609,9 @@ contexts:
 
   FQn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)[fdusmcet]{{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   FTn:
     - match: (?i)^\s{0,4}(ft)(\d*[124-8]){{break}}
@@ -622,11 +622,11 @@ contexts:
 
   FTn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(geb|frv|tmc|scx|elc|phl|cap|res|tag|roc|pds|fft|com|spm|mgc|fns|lcs){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(inc|icd|scd|ptt|let){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   F5-array:
     - match: (?i)^\s{0,4}([+*]*fi[prc])(\d*5){{break}}
@@ -644,9 +644,9 @@ contexts:
 
   F5-detector-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\bnd{{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   Fn:
     - match: (?i)^\s{0,4}([+*]*f)(\d*[1247]){{break}}
@@ -657,12 +657,12 @@ contexts:
 
   Fn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(T){{break}}
       captures:
         1: constant.language.mcnp
     - match: (?i)\b(u)\s*(?==)
       scope: variable.other.mcnp
+    - include: expressions
 
   Fn-plus:
     - match: (?i)^\s{0,4}([+*]*f)(\d*[68]){{break}}
@@ -673,12 +673,12 @@ contexts:
 
   Fn-plus-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(T){{break}}
       captures:
         1: constant.language.mcnp
     - match: (?i)\b(u)\s*(?==)
       scope: variable.other.mcnp
+    - include: expressions
 
   KCODE-KSRC-HSRC:
     - match: (?i)^\s{0,4}(kcode|ksrc|hsrc){{break}}
@@ -692,7 +692,6 @@ contexts:
 
   KOPTS-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(BLOCKSIZE|FMATSKIP|FMATNCYC|FMATSPACE|FMATN[xyz]){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(kinetics|precursor|FMATCONVRG|FMATACCEL|FMATSRC|fmat)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
@@ -705,6 +704,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   KPERTn:
     - match: (?i)^\s{0,4}(kpert)(\d+){{break}}
@@ -715,7 +715,6 @@ contexts:
 
   KPERTn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(cell|mat|rho|iso|rxn|erg){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(linear)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
@@ -723,6 +722,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   KSENn:
     - match: (?i)^\s{0,4}(ksen)(\d+)\s+(xs){{break}}
@@ -734,7 +734,6 @@ contexts:
 
   KSENn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(iso|rxn|mt|erg|ein|legendre|cos){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(constrain)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
@@ -742,6 +741,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   MESH:
     - match: (?i)^\s{0,4}(mesh){{break}}
@@ -752,7 +752,6 @@ contexts:
 
   MESH-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(ref|origin|axs|vec|[ijk]mesh|[ijk]ints){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(geom)(?:(?:\s*(=))?\s*(xyz|rzt|cyl|rec|rpt|sph)){{break}}
@@ -760,6 +759,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   MPHYS:
     - match: (?i)^\s{0,4}(MPHYS)\s+(on|off)?
@@ -793,9 +793,9 @@ contexts:
 
   MXn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)model{{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   Mn:
     - match: (?i)^\s{0,4}(m)(\d+){{break}}
@@ -806,7 +806,6 @@ contexts:
 
   Mn-body:
     - include: statement-end
-    - include: expressions
     # default-libraries:
     - match: (?i)\b([npehastd]lib|pnlib)[=\s]+(\d\d[a-z]){{break}}
       captures:
@@ -815,6 +814,7 @@ contexts:
     # variables:
     - match: (?i)\b(gas|[eh]step|cond|ref[is]){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   NACT:
     - match: (?i)^\s{0,4}(nact){{break}}
@@ -824,9 +824,9 @@ contexts:
 
   NACT-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(cells|mat){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   NAMn:
     - match: (?i)^\s{0,4}(nam)(\d+){{break}}
@@ -837,7 +837,6 @@ contexts:
 
   NAMn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(norm|iso_filter|[xyze]bounds){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(output)(?:(?:\s*(=))?\s*(cdgs|spec|gpower|gpers|actual_gpers))?{{break}}
@@ -845,6 +844,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   NCMn:
     - match: (?i)^\s{0,4}(ncm)(\d+){{break}}
@@ -855,9 +855,9 @@ contexts:
 
   NCMn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(tally|iso_filter|[xyze]bounds){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   NOTRN:
     - match: (?i)^\s{0,4}(notrn){{break}}
@@ -888,9 +888,9 @@ contexts:
 
   PERTn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(cell|mat|rho|method|erg|rxn){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   PIKMT:
     - match: (?i)^\s{0,4}(pikmt){{break}}
@@ -916,7 +916,6 @@ contexts:
 
   PTRAC-body:
     - include: statement-end
-    - include: expressions
     # coinc
     - match: (?i)\b(coinc)(?:(?:\s*(=))?\s*(col|lin))?{{break}}
       captures:
@@ -944,6 +943,7 @@ contexts:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
+    - include: expressions
 
   RAND:
     - match: (?i)^\s{0,4}(rand){{break}}
@@ -953,9 +953,9 @@ contexts:
 
   RAND-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(gen|seed|stride|hist){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   READ:
     - match: (?i)^\s{0,4}(read){{break}}
@@ -965,11 +965,11 @@ contexts:
 
   READ-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(noecho|echo){{break}}
       scope: constant.language.mcnp
     - match: (?i)\b(file|decode|encode){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   SCn:
     - match: (?i)^\s{0,4}(sc)(\d+)(\s.*$)?
@@ -986,7 +986,6 @@ contexts:
 
   SDDR-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(contrib)(?:(?:\s*(=))?\s*(zaid|cell|voxel))?{{break}}
       captures:
         1: variable.other.mcnp
@@ -994,6 +993,7 @@ contexts:
         3: constant.language.mcnp
     - match: (?i)\b(srctme){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   SDEF:
     - match: (?i)^\s{0,4}(sdef){{break}}
@@ -1003,11 +1003,11 @@ contexts:
 
   SDEF-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(fcel|ftr|ferg){{break}}
       scope: constant.language.mcnp
     - match: (?i)\b(cel|sur|erg|ftme|tme|dir|vec|nrm|pos|rad|ext|axs|[xyz]|ccc| ara|wgt|tr|eff|par|dat|loc|bem|bap){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   SIn:
     - match: (?i)^\s{0,4}(si)(\d+)\s+([hals])?
@@ -1037,9 +1037,9 @@ contexts:
 
   SSR-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(old|cel|new|pty|col|wgt|tr|psc|axs|ext|poa|bcw){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   SSW:
     - match: (?i)^\s{0,4}(ssw){{break}}
@@ -1049,9 +1049,9 @@ contexts:
 
   SSW-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(sym|pty|cel){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   STOP:
     - match: (?i)^\s{0,4}(stop){{break}}
@@ -1061,13 +1061,13 @@ contexts:
 
   STOP-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(nps|ctme){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(f)(\d+){{break}}
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+    - include: expressions
 
   TOTNU:
     - match: (?i)^\s{0,4}(totnu)\s+(no)?
@@ -1083,7 +1083,6 @@ contexts:
 
   TROPT-body:
     - include: statement-end
-    - include: expressions
     # eloss
     - match: (?i)\b(eloss)(?:(?:\s*(=))?\s*(off|strag1|csda))?{{break}}
       captures:
@@ -1111,6 +1110,7 @@ contexts:
     # variables
     - match: (?i)\b(genxs){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   TRn:
     - match: (?i)^\s{0,4}(\*{0,1}tr)(\d+){{break}}
@@ -1127,11 +1127,11 @@ contexts:
 
   Tn-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(?:cbeg|cfrq|cofi|coni|csub|cend){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(nt|C){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   VAR:
     - match: (?i)^\s{0,4}(var)\s+(on|off)?{{break}}
@@ -1147,9 +1147,9 @@ contexts:
 
   VOL-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(no){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   XMESH1:
     - match: (?i)^\s{0,4}([rcs]mesh)(\d*1){{break}}
@@ -1160,11 +1160,11 @@ contexts:
 
   XMESH1-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(mfact|trans){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(traks|flux|popul|pedep){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   XMESH2:
     - match: (?i)^\s{0,4}([rcs]mesh)(\d*2){{break}}
@@ -1175,9 +1175,9 @@ contexts:
 
   XMESH2-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(trans){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   XMESH3:
     - match: (?i)^\s{0,4}([rcs]mesh)(\d*3){{break}}
@@ -1188,11 +1188,11 @@ contexts:
 
   XMESH3-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(mfact|trans){{break}}
       scope: variable.other.mcnp
     - match: (?i)\b(total|de/dx|recol|tlest|edlct){{break}}
       scope: constant.language.mcnp
+    - include: expressions
 
   XMESH4:
     - match: (?i)^\s{0,4}([rcs]mesh)(\d*4){{break}}
@@ -1203,9 +1203,9 @@ contexts:
 
   XMESH4-body:
     - include: statement-end
-    - include: expressions
     - match: (?i)\b(trans){{break}}
       scope: variable.other.mcnp
+    - include: expressions
 
   XSn:
     - match: (?i)^\s{0,4}(xs)(\d+){{break}}
