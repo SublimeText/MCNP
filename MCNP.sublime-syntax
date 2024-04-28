@@ -10,7 +10,7 @@ file_extensions:
   - mcnp
 
 variables:
-  break: (?!\S)
+  break: (?![^=,:()\[\]\s])
 
   # numbers
   exponent: (?:[eE][-+]?\d+)
@@ -315,7 +315,7 @@ contexts:
       scope: constant.language.mcnp
 
   Cn:
-    - match: (?i)^\s{0,4}(\**C)(\d*[124-8]){{break}}
+    - match: (?i)^\s{0,4}([+*]*C)(\d*[124-8]){{break}}
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
@@ -502,26 +502,6 @@ contexts:
     - match: (?i)\s(nt|C){{break}}
       scope: constant.language.mcnp
 
-  F5-array:
-    - match: (?i)^\s{0,4}(\**fi[prc])(\d*5)(?=:)
-      captures:
-        1: keyword.other.mcnp
-        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-
-  F5-detector:
-    - match: (?i)^\s{0,4}(\**f)(\d*5)([xyz]?)(?=:)
-      captures:
-        1: keyword.other.mcnp
-        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: keyword.other.mcnp
-      push: F5-detector-body
-
-  F5-detector-body:
-    - include: statement-end
-    - include: expressions
-    - match: (?i)\snd{{break}}
-      scope: constant.language.mcnp
-
   FCn:
     - match: (?i)^\s{0,4}(fc)(\d*[124-8])\s
       captures:
@@ -546,7 +526,7 @@ contexts:
       scope: variable.other.mcnp
 
   FMESHn:
-    - match: (?i)^\s{0,4}(\**fmesh)(\d*4|\d*01)(?=:)
+    - match: (?i)^\s{0,4}([+*]*fmesh)(\d*4|\d*01)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
@@ -608,7 +588,7 @@ contexts:
       scope: variable.other.mcnp
 
   FMnFSnFUn:
-    - match: (?i)^\s{0,4}(fm|fs|fu)(\d*[124-8]){{break}}
+    - match: (?i)^\s{0,4}([+*]*f[msu])(\d*[124-8]){{break}}
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
@@ -621,7 +601,7 @@ contexts:
       scope: constant.language.mcnp
 
   FQn:
-    - match: (?i)^\s{0,4}(fq)(\d*[124-8]){{break}}
+    - match: (?i)^\s{0,4}([+*]*fq)(\d*[124-8]){{break}}
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
@@ -630,7 +610,7 @@ contexts:
   FQn-body:
     - include: statement-end
     - include: expressions
-    - match: (?i)\s*(f|d|u|s|m|c|e|t)\s+
+    - match: (?i)[fdusmcet]{{break}}
       scope: constant.language.mcnp
 
   FTn:
@@ -648,8 +628,28 @@ contexts:
     - match: (?i)(inc|icd|scd|ptt|let){{break}}
       scope: constant.language.mcnp
 
+  F5-array:
+    - match: (?i)^\s{0,4}([+*]*fi[prc])(\d*5)(?=:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  F5-detector:
+    - match: (?i)^\s{0,4}([+*]*f)(\d*5)([axyz]?)(?=:)
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+        3: keyword.other.mcnp
+      push: F5-detector-body
+
+  F5-detector-body:
+    - include: statement-end
+    - include: expressions
+    - match: (?i)\bnd{{break}}
+      scope: constant.language.mcnp
+
   Fn:
-    - match: (?i)^\s{0,4}(\**f)(\d*[1247])(?=:)
+    - match: (?i)^\s{0,4}([+*]*f)(\d*[1247]){{break}}
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
@@ -665,7 +665,7 @@ contexts:
       scope: variable.other.mcnp
 
   Fn-plus:
-    - match: (?i)^\s{0,4}([+*]*f)(\d*[68])(?=:)
+    - match: (?i)^\s{0,4}([+*]*f)(\d*[68]){{break}}
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp

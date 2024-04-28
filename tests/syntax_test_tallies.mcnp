@@ -1,0 +1,109 @@
+$ SYNTAX TEST "MCNP.sublime-syntax"
+
+c 5.9.1 Standard Tallies
+
+F1:P    $ Current integrated over a surface                                particles      MeV
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
+
+F2:P    $ Flux averaged over a surface                                     particles/cm2  MeV/cm2
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
+
+F4:P    $ Flux averaged over a cell                                        particles/cm2  MeV/cm2
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
+
+F5a:P   $ Flux at a point or ring detector                                 particles/cm2  MeV/cm2
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ keyword.other.mcnp
+$  ^ punctuation.separator.colon.mcnp
+$   ^ storage.type.particles.mcnp
+
+FIP5:P  $ Array of point detectors for pinhole flux image                  particles/cm2  MeV/cm2
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$   ^ punctuation.separator.colon.mcnp
+$    ^ storage.type.particles.mcnp
+
+FIR5:P  $ Array of point detectors for planar radiograph flux image        particles/cm2  MeV/cm2
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$   ^ punctuation.separator.colon.mcnp
+$    ^ storage.type.particles.mcnp
+
+FIC5:P  $ Array of point detectors for cylindrical radiograph flux image   particles/cm2  MeV/cm2
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$   ^ punctuation.separator.colon.mcnp
+$    ^ storage.type.particles.mcnp
+
+F6:P    $ Energy deposition averaged over a cell                           MeV/g          jerks/g
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
++F6     $ Collision heating                                                MeV/g          N/A
+$ <- keyword.other.mcnp
+$^ keyword.other.mcnp
+$ ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+F7:P    $ Fission energy deposition averaged over a cell                   MeV/g          jerks/g
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
+
+F8:P    $ Energy distribution of pulses created in a detector by radiation pulses         MeV
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
+
++F8:P   $ Charge deposition                                                charge         N/A
+$ <- keyword.other.mcnp
+$^ keyword.other.mcnp
+$ ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$  ^ punctuation.separator.colon.mcnp
+$   ^ storage.type.particles.mcnp
+
+F8:p,e  $ same as F8:p and F8:e
+$ <- keyword.other.mcnp
+$^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$ ^ punctuation.separator.colon.mcnp
+$  ^ storage.type.particles.mcnp
+$   ^ punctuation.separator.comma.mcnp
+$    ^ storage.type.particles.mcnp
+
+c Collision heating
++f126    4
+$ <- keyword.other.mcnp
+$^ keyword.other.mcnp
+$ ^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+c Collision heating
++f126:n  4
+$ <- keyword.other.mcnp
+$^ keyword.other.mcnp
+$ ^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$    ^ punctuation.separator.colon.mcnp
+
+c Tally multipliers
++fm04 -1 235 -6 $ fission rate per cm3 from U235
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$  ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$     ^^ meta.number.integer.decimal.mcnp
+$        ^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$            ^^ meta.number.integer.decimal.mcnp
+$               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.mcnp
