@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[bfld${1:0}   type    = ${2:t}         \$ Polarity [CONST|QUAD|QUADFF]
         field   = ${3:f}         \$ Field strength or gradient
-        vec     = ${4:1\ 0\ 0}     \$ Direction of field/focusing quadropole
-        axs     = ${5:0\ 0\ 1}     \$ Direction cosines of quadrupole beam axis
-        refpnt  = ${6:0\ 0\ 0}     \$ Point anywhere on quadrupole beam axis
+        vec     = ${4:1 0 0}     \$ Direction of field/focusing quadropole
+        axs     = ${5:0 0 1}     \$ Direction cosines of quadrupole beam axis
+        refpnt  = ${6:0 0 0}     \$ Point anywhere on quadrupole beam axis
         mxdeflc = ${7:10}        \$ Maximum deflection angle per step size (mrad)
         maxstep = ${8:100}       \$ Maximum step size (cm)
-        ffedges = ${9:s1\ s2...}  \$ Surface numbers for fringe-field edge kicks]]></content>
+        ffedges = ${9:s1 s2...}  \$ Surface numbers for fringe-field edge kicks]]></content>
 	<tabTrigger>BFLD</tabTrigger>
 	<scope>source.mcnp</scope>
 	<description>Magnetic field definition</description>

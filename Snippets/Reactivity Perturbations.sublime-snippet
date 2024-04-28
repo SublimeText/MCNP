@@ -1,10 +1,10 @@
 <snippet>
-	<content><![CDATA[kpert${1:0}  cell   = ${2:c1\ c2...}   \$ Cells to apply perturbation to
-        mat    = ${3:m1\ m2...}   \$ Fill cells with specified material(s)
-        rho    = ${4:r1\ r2...}   \$ Sets filled cell material densities
-        iso    = ${5:z1\ z2...}   \$ ZAIDs that the perturbation impacts
-        rxn    = ${6:rx1\ rx2...} \$ MT or special reaction numbers the perturbation impacts
-        erg    = ${7:e1\ e2...}   \$ Energies (MeV) to apply perturbation over
+	<content><![CDATA[kpert${1:0}  cell   = ${2:c1 c2...}   \$ Cells to apply perturbation to
+        mat    = ${3:m1 m2...}   \$ Fill cells with specified material(s)
+        rho    = ${4:r1 r2...}   \$ Sets filled cell material densities
+        iso    = ${5:z1 z2...}   \$ ZAIDs that the perturbation impacts
+        rxn    = ${6:rx1 rx2...} \$ MT or special reaction numbers the perturbation impacts
+        erg    = ${7:e1 e2...}   \$ Energies (MeV) to apply perturbation over
         linear = ${8:yes}        \$ Force an unperturbed fission source]]></content>
 	<tabTrigger>KPERTn</tabTrigger>
 	<scope>source.mcnp</scope>

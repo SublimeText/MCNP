@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[fc4    Rectangular mesh tally
 fmesh4:${1:n}
-        origin= ${2:0.0\ 0.0\ 0.0}         \$ Coordinates (x,y,z) of mesh origin
+        origin= ${2:0.0 0.0 0.0}         \$ Coordinates (x,y,z) of mesh origin
         geom  = ${3:xyz}                 \$ Mesh geometry
         out   = ${4:xdmf}                \$ Output format
         imesh = ${5:10}      iints = ${6:5}   \$ Coarse mesh points in X

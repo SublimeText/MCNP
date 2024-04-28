@@ -1,10 +1,10 @@
 <snippet>
-	<content><![CDATA[pert${1:4}:${2:n} cell   = ${3:c1\ c2...}  \$ Cells to apply perturbation to
+	<content><![CDATA[pert${1:4}:${2:n} cell   = ${3:c1 c2...}  \$ Cells to apply perturbation to
         mat    = ${4:m}         \$ Fills all cells with specified material
         rho    = ${5:r}         \$ Sets filled cell material density
         method = ${6:1}         \$ Number of terms included in perturbation estimate
-        erg    = ${7:e_l\ e_u}   \$ Lower and upper bounds energy range for perturbations
-        rxn    = ${8:r1\ r2...}  \$ ENDF/B reaction number(s) for perturbed xs]]></content>
+        erg    = ${7:e_l e_u}   \$ Lower and upper bounds energy range for perturbations
+        rxn    = ${8:r1 r2...}  \$ ENDF/B reaction number(s) for perturbed xs]]></content>
 	<tabTrigger>PERTn</tabTrigger>
 	<scope>source.mcnp</scope>
 	<description>Tally Perturbations via Differential Operator</description>

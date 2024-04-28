@@ -1,14 +1,14 @@
 <snippet>
 	<content><![CDATA[c Source TMESH Mesh Tally
-${1:r}mesh${2:2}  ${3:p1\ p2...}       \$ Particle designators
+${1:r}mesh${2:2}  ${3:p1 p2...}       \$ Particle designators
         trans = ${4:n}      \$ TRn card number used to translate entire mesh
 c
-cora${2:3}   ${5:ca1\ ca2...}     \$ Mesh bounds in X (rec) or R (cyl/sph)
-corb${2:3}   ${6:cb1\ cb2...}     \$ Mesh bounds in Y (rec), Z (cyl), or Phi (sph)
-corc${2:3}   ${7:cc1\ cc2...}     \$ Mesh bounds in Z (rec) or Theta (cyl/sph)
+cora${2:3}   ${5:ca1 ca2...}     \$ Mesh bounds in X (rec) or R (cyl/sph)
+corb${2:3}   ${6:cb1 cb2...}     \$ Mesh bounds in Y (rec), Z (cyl), or Phi (sph)
+corc${2:3}   ${7:cc1 cc2...}     \$ Mesh bounds in Z (rec) or Theta (cyl/sph)
 c
-ergsh${2:3}  ${8:low\ high}       \$ Lower/upper energy(+ve) or time(-ve) limits for stroring to tally
-mshmf${9:0}  ${10:[e1\ f1]...}     \$ Pairs of energy and response functions
+ergsh${2:3}  ${8:low high}       \$ Lower/upper energy(+ve) or time(-ve) limits for stroring to tally
+mshmf${9:0}  ${10:[e1 f1]...}     \$ Pairs of energy and response functions
 c]]></content>
 	<tabTrigger>RMESH2 - CMESH2 - SMESH2</tabTrigger>
 	<scope>source.mcnp</scope>

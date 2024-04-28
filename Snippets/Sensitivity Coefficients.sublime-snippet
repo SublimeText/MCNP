@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[ksen${1:0}   ${2:xs}                   \$ Type of sensitivity
-        iso = ${3:z1\ z2...}       \$ ZAIDs for which sensitivities are desired.
-        rxn = ${4:rx1\ rx2...}     \$ Reaction MT numbers or special reaction numbers
-        mt  = ${5:r1\ r2...}       \$ Same behavior as RXN
-        erg = ${6:e1\ e2...}       \$ Energy bin boundaries (MeV) to apply sensitivity over
-        ein = ${7:e1\ e2...}       \$ Range of inclident energy bins (MeV)
+        iso = ${3:z1 z2...}       \$ ZAIDs for which sensitivities are desired.
+        rxn = ${4:rx1 rx2...}     \$ Reaction MT numbers or special reaction numbers
+        mt  = ${5:r1 r2...}       \$ Same behavior as RXN
+        erg = ${6:e1 e2...}       \$ Energy bin boundaries (MeV) to apply sensitivity over
+        ein = ${7:e1 e2...}       \$ Range of inclident energy bins (MeV)
         legendre  = ${8:order}    \$ Order of Legendre moments to calculate sensitivities for
-        cos       = ${9:min\ max}  \$ Range of direction-change cosines for scattering events
+        cos       = ${9:min max}  \$ Range of direction-change cosines for scattering events
         constrain = ${10:yes}      \$ Renormalize the energy (or cosine) sensitivity distribution]]></content>
 	<tabTrigger>KSENn</tabTrigger>
 	<scope>source.mcnp</scope>

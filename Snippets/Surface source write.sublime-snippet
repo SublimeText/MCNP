@@ -1,9 +1,9 @@
 <snippet>
-	<content><![CDATA[ssw     ${1:s1\ s2...}          \$ Problem surface numbers
-        ${2:c1\ c2...}          \$ Problem cell numbers
+	<content><![CDATA[ssw     ${1:s1 s2...}          \$ Problem surface numbers
+        ${2:c1 c2...}          \$ Problem cell numbers
         sym = ${3:0}           \$ Symmetry option flag
-        pty = ${4:p1\ p2...}    \$ Controls particle types to record
-        cel = ${5:cf1\ cf2...}  \$ KCODE fission source neutrons writte for these cells]]></content>
+        pty = ${4:p1 p2...}    \$ Controls particle types to record
+        cel = ${5:cf1 cf2...}  \$ KCODE fission source neutrons writte for these cells]]></content>
 	<tabTrigger>SSW</tabTrigger>
 	<scope>source.mcnp</scope>
 	<description>Surface source write</description>

@@ -1,11 +1,11 @@
 <snippet>
 	<content><![CDATA[sdef    par = ${1:1}            \$ Source particle type(s) by symbol or number
         erg = ${2:14.0}         \$ Kinetic energy (MeV)
-        pos = ${3:0\ 0\ 0}        \$ Reference point for position sampling
+        pos = ${3:0 0 0}        \$ Reference point for position sampling
         x   = ${4:0}            \$ X coordinate of position
         y   = ${5:0}            \$ Y coordinate of position
         z   = ${6:0}            \$ Z coordinate of position
-        vec = ${7:0\ 0\ 1}        \$ Reference vector for DIR in vector notation
+        vec = ${7:0 0 1}        \$ Reference vector for DIR in vector notation
         rad = ${8:0}            \$ Radial distance of the position from POS or AXS
         ext = ${9:0}            \$ Vol: dist. from POS along AXS. Sur: cosine from AXS
         sur = ${10:0}            \$ Surface number
