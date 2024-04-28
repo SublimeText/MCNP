@@ -4,6 +4,6 @@
         ${3:ymin} ${4:ymax} \$ Termini of box sides normal to the y axis
         ${5:zmin} ${6:zmax} \$ Termini of box sides normal to the z axis]]></content>
 	<tabTrigger>RPP</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>RPP macrobody</description>
 </snippet>

@@ -10,6 +10,6 @@
         ${10:0}   \$ Limit max lower weight bound for any particle/energy/time
         ${11:1}   \$ Number of mean-free paths before checking mesh-based weights]]></content>
 	<tabTrigger>WWP</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Weight-window Parameters</description>
 </snippet>

@@ -2,6 +2,6 @@
 	<content><![CDATA[lost    ${1:100}   \$ Number of lost particles before calculation terminates
         ${2:10}    \$ Max number of debug prints for lost particles]]></content>
 	<tabTrigger>LOST</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Lost Particle Control</description>
 </snippet>

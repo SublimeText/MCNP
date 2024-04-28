@@ -7,6 +7,6 @@
         erg    = ${7:e1 e2...}   \$ Energies (MeV) to apply perturbation over
         linear = ${8:yes}        \$ Force an unperturbed fission source]]></content>
 	<tabTrigger>KPERTn</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Reactivity Perturbations via Adjoint Weighting</description>
 </snippet>

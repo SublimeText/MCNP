@@ -15,6 +15,6 @@
         tally    = ${14:t1 t2...}  \$ Tally numbers for filtering histories
         value    = ${15:0.0}       \$ Tally cutoff above which history events will be written]]></content>
 	<tabTrigger>PTRAC</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Particle Track Output</description>
 </snippet>

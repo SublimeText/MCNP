@@ -3,6 +3,6 @@
         emax = ${2:eee}       \$ Upper energy limit for applying DBRC [MeV]
         isos = ${3:iso_list}  \$ List of ZZZAAA identifiers, no suffixes]]></content>
 	<tabTrigger>DBRC</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>doppler broadening resonance correction</description>
 </snippet>

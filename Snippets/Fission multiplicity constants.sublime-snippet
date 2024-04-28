@@ -8,6 +8,6 @@
         data    = ${7:0}     \$ Select data for isotope multiplicities
         shift   = ${8:0}     \$ Method to modify sampled multiplicity]]></content>
 	<tabTrigger>FMULT</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>fission multiplicity constants</description>
 </snippet>

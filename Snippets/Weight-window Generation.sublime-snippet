@@ -5,6 +5,6 @@
         4j  \$ Unused
         ${4:i}   \$ Toggle energy (=0) or time (=1) dependent weight windows]]></content>
 	<tabTrigger>WWG</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Weight-window Generation</description>
 </snippet>

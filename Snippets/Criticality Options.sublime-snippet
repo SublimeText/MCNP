@@ -14,6 +14,6 @@
         fmatny     = ${13:0}          \$ Y-axis fission matrix mesh spacing
         fmatnz     = ${14:0}          \$ Z-axis fission matrix mesh spacing]]></content>
 	<tabTrigger>KOPTS</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Criticality Options</description>
 </snippet>

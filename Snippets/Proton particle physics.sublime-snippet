@@ -15,6 +15,6 @@
         ${10:0}     \$ Scale Cerenkov photon emission
         ${11:0}     \$ Lower energy delta-ray cutoff [MeV]]]></content>
 	<tabTrigger>PHYS:h</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>proton particle physics</description>
 </snippet>

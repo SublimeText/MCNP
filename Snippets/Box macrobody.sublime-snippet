@@ -5,6 +5,6 @@
         ${7:a2x} ${8:a2y} ${9:a2z}  \$ Vector of second side from the specified corner
         ${10:a3x} ${11:a3y} ${12:a3z}  \$ Vector of third side from the specified corner]]></content>
 	<tabTrigger>BOX</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Box macrobody</description>
 </snippet>

@@ -9,6 +9,6 @@ fmesh4:${1:n}
         kmesh = ${9:10}      kints = ${10:5}   \$ Coarse mesh points in Z
         emesh = ${11:1.0e36}              \$ Energy bin upper edges (MeV)]]></content>
 	<tabTrigger>FMESHn (rec)</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Superimposed Mesh Tally B</description>
 </snippet>

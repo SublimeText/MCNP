@@ -10,6 +10,6 @@
         x1 y2 z3  \$ (x,y,z) coordinates of eighth corner of the polyhedron
         ni        \$ Four-digit numbers describing a side of the polyhedron by corresponding corners]]></content>
 	<tabTrigger>ARB</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>ARB macrobody</description>
 </snippet>

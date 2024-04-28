@@ -89,8 +89,8 @@ $                    ^^^ constant.language.zaidlib.mcnp
 c Cell Cards
 
 1 0 -1 2 -4   $ definition of cell 3
-$ <- meta.cell.mcnp entity.name.cell.mcnp
-$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ <- meta.card.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.card.cell.mcnp
 $ ^ meta.material.void.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $   ^^ meta.number.integer.decimal.mcnp
 $   ^ keyword.operator.arithmetic.mcnp
@@ -100,16 +100,16 @@ $        ^ meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
 $         ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 2 0 #1      $ equivalent to each of the next 2 lines
-$ <- meta.cell.mcnp entity.name.cell.mcnp
-$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ <- meta.card.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.card.cell.mcnp
 $ ^ meta.material.void.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $   ^ keyword.operator.complement.mcnp
 $    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 2 0 #(-1 2 -4)
-$ <- meta.cell.mcnp entity.name.cell.mcnp
-$^^^^ meta.cell.mcnp - meta.group
-$    ^^^^^^^^^ meta.cell.mcnp meta.group.mcnp
+$ <- meta.card.cell.mcnp entity.name.cell.mcnp
+$^^^^ meta.card.cell.mcnp - meta.group
+$    ^^^^^^^^^ meta.card.cell.mcnp meta.group.mcnp
 $ ^ meta.material.void.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $   ^ keyword.operator.complement.mcnp
 $    ^ punctuation.section.group.begin.mcnp
@@ -123,9 +123,9 @@ $           ^ constant.numeric.value.mcnp
 $            ^ punctuation.section.group.begin.mcnp
 
 2 0 (+1 : -2 : +4)
-$ <- meta.cell.mcnp entity.name.cell.mcnp
-$^^^ meta.cell.mcnp - meta.group
-$    ^^^^^^^^^^^^^ meta.cell.mcnp meta.group.mcnp
+$ <- meta.card.cell.mcnp entity.name.cell.mcnp
+$^^^ meta.card.cell.mcnp - meta.group
+$    ^^^^^^^^^^^^^ meta.card.cell.mcnp meta.group.mcnp
 $ ^ meta.material.void.mcnp meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $   ^ punctuation.section.group.begin.mcnp
 $    ^^ meta.group.mcnp meta.number.integer.decimal.mcnp
@@ -141,8 +141,8 @@ $               ^ constant.numeric.value.mcnp
 $                ^ punctuation.section.group.begin.mcnp
 
 3  100 -0.0014 -7 imp:n=1 tmp=2.53e-08
-$ <- meta.cell.mcnp entity.name.cell.mcnp
-$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ <- meta.card.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.card.cell.mcnp
 $  ^^^ meta.material.other.id.mcnp
 $     ^ meta.material.other.mcnp
 $      ^^^^^^^ meta.material.other.density.mcnp
@@ -161,8 +161,8 @@ $                            ^ keyword.operator.assignment.mcnp
 $                             ^^^^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
 
 4 LIKE 2 BUT IMP:N=10 TRCL=1
-$ <- meta.cell.mcnp entity.name.cell.mcnp
-$^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
+$ <- meta.card.cell.mcnp entity.name.cell.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.card.cell.mcnp
 $ ^^^^ keyword.other.mcnp
 $      ^ constant.numeric.value.mcnp
 $        ^^^ keyword.other.mcnp
@@ -176,7 +176,7 @@ $                         ^ keyword.operator.assignment.mcnp
 $                          ^ constant.numeric.value.mcnp
 
      5 LIKE 2 BUT IMP=0
-$ ^^^^^^^^^^^^^^^^^^^^^^ - meta.cell
+$ ^^^^^^^^^^^^^^^^^^^^^^ - meta.card.cell
 $    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $      ^^^^ - keyword
 $           ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
@@ -188,43 +188,43 @@ $                     ^ meta.number.integer.decimal.mcnp constant.numeric.value.
 c Surface Cards
 
 1  p   3
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.card.surface.mcnp
 $  ^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 1  py  3
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.card.surface.mcnp
 $  ^^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 2  pz -5
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.card.surface.mcnp
 $  ^^ storage.type.surface.mcnp
 $     ^^ meta.number.integer.decimal.mcnp
 $     ^ keyword.operator.arithmetic.mcnp
 $      ^ constant.numeric.value.mcnp
 
 3  pz  5
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^ meta.card.surface.mcnp
 $  ^^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 4  s   0 -4 -2.5 0.5     $ oxygen sphere
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.card.surface.mcnp
 $  ^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-$        ^^ meta.surface.mcnp meta.number.integer.decimal.mcnp
-$           ^^^^ meta.surface.mcnp meta.number.float.decimal.mcnp
-$                ^^^ meta.surface.mcnp meta.number.float.decimal.mcnp constant.numeric.value.mcnp
+$        ^^ meta.card.surface.mcnp meta.number.integer.decimal.mcnp
+$           ^^^^ meta.card.surface.mcnp meta.number.float.decimal.mcnp
+$                ^^^ meta.card.surface.mcnp meta.number.float.decimal.mcnp constant.numeric.value.mcnp
 
 5 K/Y 0 0 2 0.25 1
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^^^^^^^^^^^^^^^^^ meta.card.surface.mcnp
 $ ^^^ storage.type.surface.mcnp
 $     ^ constant.numeric.value.mcnp
 $       ^ constant.numeric.value.mcnp
@@ -234,7 +234,7 @@ $                ^ constant.numeric.value.mcnp
 
 11 GQ 1 0.25 0.75 0 -0.866
       2 0 -12 -2 3.464 39
-$^^^^^^^^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
+$^^^^^^^^^^^^^^^^^^^^^^^^^ meta.card.surface.mcnp
 $     ^ constant.numeric.value.mcnp
 $       ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $         ^ meta.number.integer.decimal.mcnp keyword.operator.arithmetic.mcnp
@@ -245,10 +245,10 @@ $                ^^^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcn
 $                      ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 12 7 CX 1
-$ <- meta.surface.mcnp entity.name.surface.mcnp
-$^^ meta.surface.mcnp
-$  ^ meta.surface.transformation.mcnp
-$   ^^^^^^ meta.surface.mcnp
+$ <- meta.card.surface.mcnp entity.name.surface.mcnp
+$^^ meta.card.surface.mcnp
+$  ^ meta.card.surface.transformation.mcnp
+$   ^^^^^^ meta.card.surface.mcnp
 $^ entity.name.surface.mcnp
 $  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $    ^^ storage.type.surface.mcnp

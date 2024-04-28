@@ -7,6 +7,6 @@
         ${6:0}     \$ Normalization value for generated weight windows
         ${7:1000}  \$ Compression limit for generated weight windows]]></content>
 	<tabTrigger>MGOPT</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>multigroup adjoint transport options</description>
 </snippet>

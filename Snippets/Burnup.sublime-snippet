@@ -11,6 +11,6 @@
         swapb  = ${10:n ts1 [u1 u2...]}   \$ Swap universe content at the end of time steps
         nostats                     \$ Disable computation/output of statistical parameters]]></content>
 	<tabTrigger>BURN</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Burnup</description>
 </snippet>

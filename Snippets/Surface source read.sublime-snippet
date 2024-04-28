@@ -8,6 +8,6 @@
         tr  = ${7:n}           \$ Transformation number/ distribution number
         psc = ${8:c}           \$ Constant used in PSC evaluation]]></content>
 	<tabTrigger>SSR</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Surface source write</description>
 </snippet>

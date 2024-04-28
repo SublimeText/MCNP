@@ -5,6 +5,6 @@
         ${7:r1}        \$ Radius of lower cone base
         ${10:r2}        \$ Radius of upper cone base]]></content>
 	<tabTrigger>TRC</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>TRC macrobody</description>
 </snippet>

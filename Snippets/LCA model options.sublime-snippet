@@ -11,6 +11,6 @@
         ${10:0}           \$ Choose light ion and nucleon physics modules
         ${11:nevtype}     \$ Choose number of evaporation particles modeled by GEM2]]></content>
 	<tabTrigger>LCA</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>physics models options</description>
 </snippet>

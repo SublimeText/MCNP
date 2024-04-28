@@ -6,6 +6,6 @@
         ${10:s1} ${11:s2} ${12:s3}  \$ Vector to center of the second facet (optional for regular hexagon)
         ${13:t1} ${14:t2} ${15:t3}  \$ Vector to center of the third facet (optional for regular hexagon)]]></content>
 	<tabTrigger>RHP</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>RHP macrobody</description>
 </snippet>

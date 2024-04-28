@@ -3,6 +3,6 @@
         ctme = ${2:tme}    \$ Stop calculation after tme minutes of computer time
         F${3:0}   = ${4:e}      \$ Stop calculation when rel. err. of tally k is <e]]></content>
 	<tabTrigger>STOP</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Precision Cutoff</description>
 </snippet>

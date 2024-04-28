@@ -9,6 +9,6 @@
         cos       = ${9:min max}  \$ Range of direction-change cosines for scattering events
         constrain = ${10:yes}      \$ Renormalize the energy (or cosine) sensitivity distribution]]></content>
 	<tabTrigger>KSENn</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>k_eff Sensitivity Coefficients via Adjoint Weighting</description>
 </snippet>

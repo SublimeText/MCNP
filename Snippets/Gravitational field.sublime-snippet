@@ -4,6 +4,6 @@
         grad = ${3:3671}      \$ Radius of planetary object (km)
         gsur = ${4:s1 s2...}  \$ List of one or more surface numbers]]></content>
 	<tabTrigger>FIELD</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Gravitational field</description>
 </snippet>

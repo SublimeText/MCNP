@@ -5,6 +5,6 @@ ${1:c RMESH/CMESH/SMESH tallies here}
 c
 endmd   \$ ------ TMESH tallies end ------]]></content>
 	<tabTrigger>TMESH</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>TMESH Mesh Tally Markers</description>
 </snippet>

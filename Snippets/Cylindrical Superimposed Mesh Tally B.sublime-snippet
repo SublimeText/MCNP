@@ -11,6 +11,6 @@ fmesh4:${1:n}
         kmesh = ${11:10}      kints = ${12:5}   \$ Coarse mesh points in T
         emesh = ${13:1.0e36}              \$ Energy bin upper edges (MeV)]]></content>
 	<tabTrigger>FMESHn (cyl)</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Superimposed Mesh Tally B</description>
 </snippet>

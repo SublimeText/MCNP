@@ -5,6 +5,6 @@
         pty = ${4:p1 p2...}    \$ Controls particle types to record
         cel = ${5:cf1 cf2...}  \$ KCODE fission source neutrons writte for these cells]]></content>
 	<tabTrigger>SSW</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Surface source write</description>
 </snippet>

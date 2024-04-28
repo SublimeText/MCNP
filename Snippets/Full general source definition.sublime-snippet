@@ -24,6 +24,6 @@
         bem = exn eyn bml  \$ Beam emittance parameters
         bap = ba1 ba2 u    \$ Beam aperture parameters]]></content>
 	<tabTrigger>SDEF (full)</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>General source definition</description>
 </snippet>

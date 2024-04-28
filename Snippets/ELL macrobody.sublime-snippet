@@ -4,6 +4,6 @@
         ${4:v2x} ${5:v2y} ${6:v2z}  \$ Coordinates of second focus (r>0) or major axis vector (r<0)
         ${7:r}            \$ major (r>0) or minor (r<0) radius length]]></content>
 	<tabTrigger>ELL</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>ELL macrobody</description>
 </snippet>

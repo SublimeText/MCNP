@@ -4,6 +4,6 @@
         ${3:2}       \$ Vertical axis orientation
         ${4:emapk}   \$ Operating beam energy of maps]]></content>
 	<tabTrigger>COSYP</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Magnetic Field Transfer Map Parameters</description>
 </snippet>

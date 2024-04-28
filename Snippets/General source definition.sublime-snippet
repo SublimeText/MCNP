@@ -4,6 +4,6 @@
         pos = ${3:0 0 0}    \$ Reference point for position sampling
         wgt = ${4:1.0}      \$ Particle weight]]></content>
 	<tabTrigger>SDEF</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>General source definition</description>
 </snippet>

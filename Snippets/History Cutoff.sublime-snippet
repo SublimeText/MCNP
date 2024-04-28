@@ -3,6 +3,6 @@
         ${2:npsmg}        \$ Direct source contributions to pixels of FIR radiography grid
         ${3:n_per_batch}  \$ Number of histories used per batch for tallies with batch statistics]]></content>
 	<tabTrigger>NPS</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>History Cutoff</description>
 </snippet>

@@ -8,6 +8,6 @@
         jmesh = ${8:10}      jints = ${9:5}   \$ Coarse mesh points in Y/Z
         kmesh = ${10:10}      kints = ${11:5}   \$ Coarse mesh points in Z/T]]></content>
 	<tabTrigger>MESH</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Importance Mesh for Mesh-Based Weight-Window Generator</description>
 </snippet>

@@ -11,6 +11,6 @@
         errors  = ${10:yes}        \$ (opt, dep) Record rel. err. [YES, NO]
         comment = ${11:some text}  \$ (opt, dep) Comment in EEOUT file]]></content>
 	<tabTrigger>EMBEE</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>embedded elemental edits</description>
 </snippet>

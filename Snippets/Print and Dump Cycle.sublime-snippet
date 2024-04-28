@@ -5,6 +5,6 @@
         ${4:ndmp}   \$ Maximum number of dumps on the runtape file
         ${5:dmmp}   \$ Frequency of tally fluctuation chart calculations]]></content>
 	<tabTrigger>PRDMP</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Print and Dump Cycle</description>
 </snippet>

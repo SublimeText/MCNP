@@ -16,6 +16,6 @@
         gmvfile    = ${15:filename}        \$ (opt, dep) Name of the GMV output file
         mcnpumfile = ${16:filename}        \$ (opt, dep) Name of the MCNPUM output file]]></content>
 	<tabTrigger>EMBED</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Embedded geometry</description>
 </snippet>

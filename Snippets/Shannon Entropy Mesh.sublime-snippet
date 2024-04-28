@@ -9,6 +9,6 @@
         ${8:z_min}    \$ Minimum z value for mesh
         ${9:z_max}    \$ Maximum z value for mesh]]></content>
 	<tabTrigger>HSRC</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Shannon Entropy Mesh</description>
 </snippet>

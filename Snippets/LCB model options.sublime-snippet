@@ -8,6 +8,6 @@
         ${7:-1.0}    \$ Cutoff kinetic energy
         ${8:-1.0}    \$ Max correction for mass-energy balancing in cascade]]></content>
 	<tabTrigger>LCB</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>physics models options</description>
 </snippet>

@@ -4,6 +4,6 @@
         ${4:h1} ${5:h2} ${6:h3}  \$ Axis vector for orientation and cylinder height
         ${7:r}         \$ Radius of cylinder]]></content>
 	<tabTrigger>RCC</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>RCC macrobody</description>
 </snippet>

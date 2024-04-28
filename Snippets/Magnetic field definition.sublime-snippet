@@ -8,6 +8,6 @@
         maxstep = ${8:100}       \$ Maximum step size (cm)
         ffedges = ${9:s1 s2...}  \$ Surface numbers for fringe-field edge kicks]]></content>
 	<tabTrigger>BFLD</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Magnetic field definition</description>
 </snippet>

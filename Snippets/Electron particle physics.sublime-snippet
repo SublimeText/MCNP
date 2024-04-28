@@ -18,6 +18,6 @@
         ${14:0.001} \$ Control start of single-event transport
         ${15:0}     \$ Scale Cerenkov photon emission]]></content>
 	<tabTrigger>PHYS:e</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>electron particle physics</description>
 </snippet>

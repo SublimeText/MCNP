@@ -8,6 +8,6 @@
         ${7:6500}   \$ Maximum number of cycle values on MCTAL or RUNTPE files
         ${8:1}      \$ Cycles over which summary and tally information are averaged]]></content>
 	<tabTrigger>KCODE</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Criticality Source</description>
 </snippet>

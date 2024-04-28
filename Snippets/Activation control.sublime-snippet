@@ -12,6 +12,6 @@
         hlcut   = ${11:0}         \$ Spontaneous-decay half-life threshold [s]
         sample  = ${12:correlate} \$ Flag for correlated or uncorrelated [MeV]]]></content>
 	<tabTrigger>ACT</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>activation control</description>
 </snippet>

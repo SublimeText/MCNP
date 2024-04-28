@@ -16,6 +16,6 @@ ergsh${2:3}  ${13:low high}       \$ Lower/upper energy(+ve) or time(-ve) limits
 mshmf${14:0}  ${15:[e1 f1]...}     \$ Pairs of energy and response functions
 c]]></content>
 	<tabTrigger>RMESH3 - CMESH3 - SMESH3</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Energy Deposition TMESH Mesh Tally</description>
 </snippet>

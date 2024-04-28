@@ -8,6 +8,6 @@
         E    \$ Energy bins
         T    \$ Time bins]]></content>
 	<tabTrigger>FQn</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Print Hierarchy</description>
 </snippet>

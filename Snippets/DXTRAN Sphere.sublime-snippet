@@ -6,6 +6,6 @@
         ${6:0.0}       \$ Lower weight cutoff for DXTRAN weight-cutoff
         ${7:0.0}       \$ Minimum photon weight]]></content>
 	<tabTrigger>DXT</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Importance Mesh for Mesh-Based Weight-Window Generator</description>
 </snippet>

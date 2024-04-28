@@ -20,6 +20,6 @@ fmesh4:${1:n}
         kclear= ${21:0}                   \$ Generate visualization of cycle quantities
         tally = ${22:fast_hist}           \$ Tallying algorithm]]></content>
 	<tabTrigger>FMESHn (full)</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Superimposed Mesh Tally B</description>
 </snippet>

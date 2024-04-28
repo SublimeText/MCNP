@@ -9,6 +9,6 @@
         ${7:0}       \$ Write no INCL bank particles below this energy
         ${8:0}       \$ Write no ABLA bank particles below this energy]]></content>
 	<tabTrigger>LCC</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>physics models options</description>
 </snippet>

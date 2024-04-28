@@ -6,6 +6,6 @@
         erg    = ${7:e_l e_u}   \$ Lower and upper bounds energy range for perturbations
         rxn    = ${8:r1 r2...}  \$ ENDF/B reaction number(s) for perturbed xs]]></content>
 	<tabTrigger>PERTn</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Tally Perturbations via Differential Operator</description>
 </snippet>

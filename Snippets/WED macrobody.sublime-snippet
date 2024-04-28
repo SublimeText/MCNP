@@ -5,6 +5,6 @@
         ${7:v2x} ${8:v2y} ${9:v2z}  \$ Vector of second side of triangular base
         ${10:v3x} ${11:v3y} ${12:v3z}  \$ Height vector]]></content>
 	<tabTrigger>WED</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>WED macrobody</description>
 </snippet>

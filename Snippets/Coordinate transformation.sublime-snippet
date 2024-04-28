@@ -5,6 +5,6 @@
         ${5:0 0 1}   \$ xz' yz' zz'
         ${6:1}       \$ defined in main (1) or auxiliary system (-1)]]></content>
 	<tabTrigger>TR</tabTrigger>
-	<scope>source.mcnp</scope>
+	<scope>source.mcnp - meta.card</scope>
 	<description>Coordinate Transformation</description>
 </snippet>
