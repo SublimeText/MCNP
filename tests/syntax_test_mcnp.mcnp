@@ -368,6 +368,37 @@ $    ^^^ - keyword
 $        ^^^^^^ - variable
 $               ^^^^^^^^^ comment.line.mcnp
 
+ACT sample
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+
+ACT sample =
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+$          ^ keyword.operator.assignment.mcnp
+
+ACT sample = correlate
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+$          ^ keyword.operator.assignment.mcnp
+$            ^^^^^^^^^ constant.language.mcnp
+
+ACT sample=correlate
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+$         ^ keyword.operator.assignment.mcnp
+$          ^^^^^^^^^ constant.language.mcnp
+
+ACT sample correlate
+$ <- keyword.other.mcnp
+$^^ keyword.other.mcnp
+$   ^^^^^^ variable.other.mcnp
+$          ^^^^^^^^^ constant.language.mcnp
+
 bfld4 type
 $ <- keyword.other.mcnp
 $^^^ keyword.other.mcnp

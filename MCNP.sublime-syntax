@@ -259,22 +259,22 @@ contexts:
   ACT-body:
     - include: statement-end
     - include: expressions
-    - match: (?i)\b(dg)\s*(?:(=)\s*)?(lines|mg|none)?{{break}}
+    - match: (?i)\b(dg)(?:(?:\s*(=))?\s*(lines|mg|none))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(dn)\s*(?:(=)\s*)?(model|library|both|prompt)?{{break}}
+    - match: (?i)\b(dn)(?:(?:\s*(=))?\s*(model|library|both|prompt))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(nonfiss|fission)\s*(?:(=)\s*)?(none|[npefa,\s]+)?{{break}}
+    - match: (?i)\b(nonfiss|fission)(?:(?:\s*(=))?\s*(none|[npefa,\s]+))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(sample)\s*(?:(=)\s*)?(correlate|nonfiss_cor)?{{break}}
+    - match: (?i)\b(sample)(?:(?:\s*(=))?\s*(correlate|nonfiss_cor))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -432,29 +432,29 @@ contexts:
   EMBED-body:
     - include: statement-end
     - include: expressions
-    - match: (?i)\b(debug)\s*(?:(=)\s*)?(echomesh)?{{break}}
+    - match: (?i)\b(debug)(?:(?:\s*(=))?\s*(echomesh))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(meshgeo)\s*(?:(=)\s*)?(lnk3dnt|abaqus|mcnpum|hdf5)?{{break}}
+    - match: (?i)\b(meshgeo)(?:(?:\s*(=))?\s*(lnk3dnt|abaqus|mcnpum|hdf5))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(overlap)\s*(?:(=)\s*)?(exit|entry|average)?{{break}}
+    - match: (?i)\b(overlap)(?:(?:\s*(=))?\s*(exit|entry|average))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(filetype)\s*(?:(=)\s*)?(ascii|binary)?{{break}}
+    - match: (?i)\b(filetype)(?:(?:\s*(=))?\s*(ascii|binary))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     - match: (?i)\b(background|matcell|mgeoin|mgeout|meein|gmvfile|hdf5file|length|mcnpumfile)[=\s]
       scope: variable.other.mcnp
-    - match: (?i)\b(elementchk|calc_vols)\s*(?:(=)\s*)?(yes|no)?{{break}}
+    - match: (?i)\b(elementchk|calc_vols)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -470,14 +470,14 @@ contexts:
   EMBEE-body:
     - include: statement-end
     - include: expressions
-    - match: (?i)\b(mtype)\s*(?:(=)\s*)?(flux|isotopic|population|reaction|source|tracks)?{{break}}
+    - match: (?i)\b(mtype)(?:(?:\s*(=))?\s*(flux|isotopic|population|reaction|source|tracks))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     - match: (?i)\b(embed|comment|energy|time|factor|list|mat){{break}}
       scope: variable.other.mcnp
-    - match: (?i)\b(errors|atom)\s*(?:(=)\s*)?(yes|no)?{{break}}
+    - match: (?i)\b(errors|atom)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -536,31 +536,31 @@ contexts:
     - include: statement-end
     - include: expressions
     # cuv
-    - match: (?i)\b(smpl_ty)\s*(?:(=)\s*)?(syst|rand|regular)?{{break}}
+    - match: (?i)\b(smpl_ty)(?:(?:\s*(=))?\s*(syst|rand|regular))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # geometry
-    - match: (?i)\b(geom)\s*(?:(=)\s*)?(xyz|rzt|cyl|rec){{break}}
+    - match: (?i)\b(geom)(?:(?:\s*(=))?\s*(xyz|rzt|cyl|rec)){{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # output
-    - match: (?i)\b(out)\s*(?:(=)\s*)?(colsci|col|cfsci|cf|ij|ik|jk|none|xdmf){{break}}
+    - match: (?i)\b(out)(?:(?:\s*(=))?\s*(colsci|col|cfsci|cf|ij|ik|jk|none|xdmf)){{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # tally
-    - match: (?i)\b(tally)\s*(?:(=)\s*)?(fast_hist|hist|rma_batch|batch)?{{break}}
+    - match: (?i)\b(tally)(?:(?:\s*(=))?\s*(fast_hist|hist|rma_batch|batch))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # type
-    - match: (?i)\b(type)\s*(?:(=)\s*)?(flux|source)?{{break}}
+    - match: (?i)\b(type)(?:(?:\s*(=))?\s*(flux|source))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -569,7 +569,7 @@ contexts:
     - match: (?i)\b(origin|axs|vec|[ijket]mesh|[ijket]ints|factor|tr|inc|kclear){{break}}
       scope: variable.other.mcnp
     # yesno
-    - match: (?i)\b([et]norm|voidoff|vtkout|prntcell)\s*(?:(=)\s*)?(yes|no)?{{break}}
+    - match: (?i)\b([et]norm|voidoff|vtkout|prntcell)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -695,12 +695,12 @@ contexts:
     - include: expressions
     - match: (?i)\b(BLOCKSIZE|FMATSKIP|FMATNCYC|FMATSPACE|FMATN[xyz]){{break}}
       scope: variable.other.mcnp
-    - match: (?i)\b(kinetics|precursor|FMATCONVRG|FMATACCEL|FMATSRC|fmat)\s*(?:(=)\s*)?(yes|no)?{{break}}
+    - match: (?i)\b(kinetics|precursor|FMATCONVRG|FMATACCEL|FMATSRC|fmat)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
-    - match: (?i)\b(ksental)\s*(?:(=)\s*)?(mctal)?{{break}}
+    - match: (?i)\b(ksental)(?:(?:\s*(=))?\s*(mctal))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -718,7 +718,7 @@ contexts:
     - include: expressions
     - match: (?i)\b(cell|mat|rho|iso|rxn|erg){{break}}
       scope: variable.other.mcnp
-    - match: (?i)\b(linear)\s*(?:(=)\s*)?(yes|no)?{{break}}
+    - match: (?i)\b(linear)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -737,7 +737,7 @@ contexts:
     - include: expressions
     - match: (?i)\b(iso|rxn|mt|erg|ein|legendre|cos){{break}}
       scope: variable.other.mcnp
-    - match: (?i)\b(constrain)\s*(?:(=)\s*)?(yes|no)?{{break}}
+    - match: (?i)\b(constrain)(?:(?:\s*(=))?\s*(yes|no))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -755,7 +755,7 @@ contexts:
     - include: expressions
     - match: (?i)\b(ref|origin|axs|vec|[ijk]mesh|[ijk]ints){{break}}
       scope: variable.other.mcnp
-    - match: (?i)\b(geom)\s*(?:(=)\s*)?(xyz|rzt|cyl|rec|rpt|sph){{break}}
+    - match: (?i)\b(geom)(?:(?:\s*(=))?\s*(xyz|rzt|cyl|rec|rpt|sph)){{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -840,7 +840,7 @@ contexts:
     - include: expressions
     - match: (?i)\b(norm|iso_filter|[xyze]bounds){{break}}
       scope: variable.other.mcnp
-    - match: (?i)\b(output)\s*(?:(=)\s*)?(cdgs|spec|gpower|gpers|actual_gpers)?{{break}}
+    - match: (?i)\b(output)(?:(?:\s*(=))?\s*(cdgs|spec|gpower|gpers|actual_gpers))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -918,7 +918,7 @@ contexts:
     - include: statement-end
     - include: expressions
     # coinc
-    - match: (?i)\b(coinc)\s*(?:(=)\s*)?(col|lin)?{{break}}
+    - match: (?i)\b(coinc)(?:(?:\s*(=))?\s*(col|lin))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -927,19 +927,19 @@ contexts:
     - match: (?i)\b(buffer|flushnps|max|meph|filter|type|nps|cell|surface|tally|value){{break}}
       scope: variable.other.mcnp
     # event
-    - match: (?i)\b(event)\s*(?:(=)\s*)?(src|bnk|sur|col|ter|cap)?{{break}}
+    - match: (?i)\b(event)(?:(?:\s*(=))?\s*(src|bnk|sur|col|ter|cap))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # file
-    - match: (?i)\b(file)\s*(?:(=)\s*)?(hdf5|asc|bin|aov|bov){{break}}
+    - match: (?i)\b(file)(?:(?:\s*(=))?\s*(hdf5|asc|bin|aov|bov)){{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # write
-    - match: (?i)\b(write)\s*(?:(=)\s*)?(pos|all)?{{break}}
+    - match: (?i)\b(write)(?:(?:\s*(=))?\s*(pos|all))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -987,7 +987,7 @@ contexts:
   SDDR-body:
     - include: statement-end
     - include: expressions
-    - match: (?i)\b(contrib)\s*(?:(=)\s*)?(zaid|cell|voxel)?{{break}}
+    - match: (?i)\b(contrib)(?:(?:\s*(=))?\s*(zaid|cell|voxel))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
@@ -1008,8 +1008,6 @@ contexts:
       scope: constant.language.mcnp
     - match: (?i)\b(cel|sur|erg|ftme|tme|dir|vec|nrm|pos|rad|ext|axs|[xyz]|ccc| ara|wgt|tr|eff|par|dat|loc|bem|bap){{break}}
       scope: variable.other.mcnp
-    - match: =
-      scope: keyword.operator.assignment.mcnp
 
   SIn:
     - match: (?i)^\s{0,4}(si)(\d+)\s+([hals])?
@@ -1087,25 +1085,25 @@ contexts:
     - include: statement-end
     - include: expressions
     # eloss
-    - match: (?i)\b(eloss)\s*(?:(=)\s*)?(off|strag1|csda)?{{break}}
+    - match: (?i)\b(eloss)(?:(?:\s*(=))?\s*(off|strag1|csda))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # mcscat
-    - match: (?i)\b(mcscat)\s*(?:(=)\s*)?(off|fnal[12]|gaussian)?{{break}}
+    - match: (?i)\b(mcscat)(?:(?:\s*(=))?\s*(off|fnal[12]|gaussian))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # mescat
-    - match: (?i)\b(mescat|nescat)\s*(?:(=)\s*)?(off|on)?{{break}}
+    - match: (?i)\b(mescat|nescat)(?:(?:\s*(=))?\s*(off|on))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
         3: constant.language.mcnp
     # nreact
-    - match: (?i)\b(nreact)\s*(?:(=)\s*)?(off|on|atten|remove)?{{break}}
+    - match: (?i)\b(nreact)(?:(?:\s*(=))?\s*(off|on|atten|remove))?{{break}}
       captures:
         1: variable.other.mcnp
         2: keyword.operator.assignment.mcnp
