@@ -151,7 +151,9 @@ $      ^^^^^^^ meta.number.float.decimal.mcnp
 $      ^ keyword.operator.arithmetic.mcnp
 $       ^^^^^^ constant.numeric.value.mcnp
 $              ^^ meta.number.integer.decimal.mcnp
-$                 ^^^^^ variable.parameter.mcnp
+$                 ^^^ variable.parameter.mcnp
+$                    ^ punctuation.separator.colon.mcnp
+$                     ^ storage.type.particles.mcnp
 $                      ^ keyword.operator.assignment.mcnp
 $                       ^ constant.numeric.value.mcnp
 $                         ^^^ variable.parameter.mcnp
@@ -164,8 +166,9 @@ $^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.cell.mcnp
 $ ^^^^ keyword.other.mcnp
 $      ^ constant.numeric.value.mcnp
 $        ^^^ keyword.other.mcnp
-$            ^^^^^ variable.parameter.mcnp
+$            ^^^ variable.parameter.mcnp
 $               ^ punctuation.separator.colon.mcnp
+$                ^ storage.type.particles.mcnp
 $                 ^ keyword.operator.assignment.mcnp
 $                  ^^ constant.numeric.value.mcnp
 $                     ^^^^ variable.parameter.mcnp
@@ -263,11 +266,54 @@ $               ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $                 ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $                    ^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
+c Particle Types
+
+c mode card
+MODE   n p
+$      ^ storage.type.particles.mcnp
+$        ^ storage.type.particles.mcnp
+
+MODE   N P
+$ <- keyword.other.mcnp
+$      ^ storage.type.particles.mcnp
+$        ^ storage.type.particles.mcnp
+
+MODE   N, P,
+$      ^ storage.type.particles.mcnp
+$       ^ punctuation.separator.comma.mcnp
+$         ^ storage.type.particles.mcnp
+$          ^ punctuation.separator.comma.mcnp
+
+c comma separated
+      N P
+$     ^ storage.type.particles.mcnp
+$       ^ storage.type.particles.mcnp
+
+      N,P
+$     ^ storage.type.particles.mcnp
+$      ^ punctuation.separator.comma.mcnp
+$       ^ storage.type.particles.mcnp
+
+c part of cards
+PHYS:N
+$   ^ punctuation.separator.colon.mcnp
+$    ^ storage.type.particles.mcnp
+
+c multiple on card
+FMESH34:NPE
+$      ^ punctuation.separator.colon.mcnp
+$       ^^^ storage.type.particles.mcnp
+
+FMESH34:N,P,E
+$      ^ punctuation.separator.colon.mcnp
+$       ^ storage.type.particles.mcnp
+$        ^ punctuation.separator.comma.mcnp
+$         ^ storage.type.particles.mcnp
+$          ^ punctuation.separator.comma.mcnp
+$           ^ storage.type.particles.mcnp
+
 c Data Cards
 M100   08016.31c   1.0   $ oxygen 16
-
-c
-MODE   n p
 
 c
 sdef   par = 1
@@ -289,6 +335,7 @@ $ <- keyword.other.mcnp
 $^^^^ keyword.other.mcnp
 $    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $     ^ punctuation.separator.colon.mcnp
+$      ^ storage.type.particles.mcnp
        origin = 0.0 0.0 0.0
 $      ^^^^^^^ variable.other.mcnp
 $             ^ keyword.operator.assignment.mcnp

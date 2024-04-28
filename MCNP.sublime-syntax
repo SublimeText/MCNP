@@ -136,6 +136,7 @@ contexts:
     - include: brackets
     - include: numbers
     - include: operators
+    - include: particles
 
 ###[ COMMENTS ]################################################################
 
@@ -197,10 +198,11 @@ contexts:
     - include: numbers
     - include: cell-groups
     - include: cell-operators
-    - match: (?i:IMP|VOL|PWT|EXT|FCL|WWN|DXC|NONU|PD|TMP|TRCL|LAT|FILL|ELPT|COSY|BFLCL|UNC|U)(?i:(:)[np]?)?
-      scope: variable.parameter.mcnp
+    - match: (?i)(IMP|VOL|PWT|EXT|FCL|WWN|DXC|NONU|PD|TMP|TRCL|LAT|FILL|ELPT|COSY|BFLCL|UNC|U)(?:(:)([np]?))?
       captures:
-        1: punctuation.separator.colon.mcnp
+        1: variable.parameter.mcnp
+        2: punctuation.separator.colon.mcnp
+        3: storage.type.particles.mcnp
 
   cell-groups:
     - match: \(
@@ -240,11 +242,11 @@ contexts:
   surface-cards-body:
     - meta_content_scope: meta.surface.mcnp
     - include: statement-end
-    - include: expressions
     - match: (?i:p[xyz]?|s[qxyzo]?|[ck]/?[xyz]|gq|t[xyz]){{break}}
       scope: storage.type.surface.mcnp
     - match: (?i:box|rpp|sph|rcc|rhp|hex|rec|trc|ell|wed|arb){{break}}
       scope: storage.type.surface.mcnp
+    - include: expressions
 
 ###[ DATA CARDS ]##############################################################
 
@@ -459,11 +461,10 @@ contexts:
         3: constant.language.mcnp
 
   EMBEE:
-    - match: (?i)^\s{0,4}(EMBEE)(\d+)(:)
+    - match: (?i)^\s{0,4}(EMBEE)(\d+)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: EMBEE-body
 
   EMBEE-body:
@@ -502,19 +503,17 @@ contexts:
       scope: constant.language.mcnp
 
   F5-array:
-    - match: (?i)^\s{0,4}([\*]*fi[prc])(\d*5)(:)
+    - match: (?i)^\s{0,4}(\**fi[prc])(\d*5)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
 
   F5-detector:
-    - match: (?i)^\s{0,4}(\**f)(\d*5)([xyz]?)(:)
+    - match: (?i)^\s{0,4}(\**f)(\d*5)([xyz]?)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
         3: keyword.other.mcnp
-        4: punctuation.separator.colon.mcnp
       push: F5-detector-body
 
   F5-detector-body:
@@ -547,11 +546,10 @@ contexts:
       scope: variable.other.mcnp
 
   FMESHn:
-    - match: (?i)^\s{0,4}(\**fmesh)(\d*4|\d*01)(:)
+    - match: (?i)^\s{0,4}(\**fmesh)(\d*4|\d*01)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: FMESHn-body
 
   FMESHn-body:
@@ -651,11 +649,10 @@ contexts:
       scope: constant.language.mcnp
 
   Fn:
-    - match: (?i)^\s{0,4}(\**f)(\d*[1247])(:)
+    - match: (?i)^\s{0,4}(\**f)(\d*[1247])(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: Fn-body
 
   Fn-body:
@@ -668,11 +665,10 @@ contexts:
       scope: variable.other.mcnp
 
   Fn-plus:
-    - match: (?i)^\s{0,4}([+*]*f)(\d*[68])(:)
+    - match: (?i)^\s{0,4}([+*]*f)(\d*[68])(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: Fn-plus-body
 
   Fn-plus-body:
@@ -884,11 +880,10 @@ contexts:
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
   PERTn:
-    - match: (?i)^\s{0,4}(pert)(\d+)(:)
+    - match: (?i)^\s{0,4}(pert)(\d+)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: PERTn-body
 
   PERTn-body:
@@ -1159,11 +1154,10 @@ contexts:
       scope: constant.language.mcnp
 
   XMESH1:
-    - match: (?i)^\s{0,4}([rcs]mesh)(\d*1)(:)
+    - match: (?i)^\s{0,4}([rcs]mesh)(\d*1)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: XMESH1-body
 
   XMESH1-body:
@@ -1203,11 +1197,10 @@ contexts:
       scope: constant.language.mcnp
 
   XMESH4:
-    - match: (?i)^\s{0,4}([rcs]mesh)(\d*4)(:)
+    - match: (?i)^\s{0,4}([rcs]mesh)(\d*4)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-        3: punctuation.separator.colon.mcnp
       push: XMESH4-body
 
   XMESH4-body:
@@ -1337,11 +1330,28 @@ contexts:
       scope: keyword.operator.assignment.mcnp
     - match: ':'
       scope: punctuation.separator.colon.mcnp
+      push: particle
+    - match: ','
+      scope: punctuation.separator.comma.mcnp
+
+  particles:
+    - match: (?i)\b[ehnp]{{break}}
+      scope: storage.type.particles.mcnp
+
+  particle:
+    - match: (?i)[ehnp]{1,4}{{break}}
+      scope: storage.type.particles.mcnp
+      pop: 1
+    - include: immediately-pop
 
 ###[ PROTOTYPES ]##############################################################
 
   else-pop:
     - match: (?=\S)
+      pop: 1
+
+  immediately-pop:
+    - match:  ''
       pop: 1
 
   statement-end:
