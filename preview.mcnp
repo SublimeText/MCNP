@@ -1,0 +1,42 @@
+Example input deck (eill not run)
+
+c Cell cards
+1    100    -0.0014  -7                   imp:n=1 tmp=2.53e-08
+2    100    -1.60     1 -2 -3 4 -5 6 7 8  imp:n=1 tmp=2.53e-08
+3    0               -1:2:3:-4:5:-6
+
+c Surface cards
+1    pz -5               $ bounding plane (-z)
+2    pz  5               $ bounding plane (+z)
+3    py  5               $ bounding plane (+y)
+4    py -5               $ bounding plane (-y)
+5    px  5               $ bounding plane (+x)
+6    px -5               $ bounding plane (-x)
+7    s   0 -4 -2.5 0.5   $ oxygen sphere
+8    s   0 4 4.5 0.5     $ iron sphere
+
+c Data cards
+M100    08016.31c  1.0  $ oxigen 16
+M200    26000.31c  1.0  $ natural iron
+M300    06000.31c  1.0  $ carbon
+c
+MODE    n p
+c
+sdef    par = 1        $ Source particle type(s) by symbol or number
+        erg = 14.0     $ Kinetic energy (MeV)
+        pos = 0 0 0    $ Reference point for position sampling
+        wgt = 1.0      $ Particle weight
+c
+fc4    Rectangular mesh tally
+fmesh4:n
+        origin= 0.0 0.0 0.0         $ Coordinates (x,y,z) of mesh origin
+        geom  = xyz                 $ Mesh geometry
+        out   = xdmf                $ Output format
+        imesh = 10      iints = 5   $ Coarse mesh points in X
+        jmesh = 10      jints = 5   $ Coarse mesh points in Y
+        kmesh = 10      kints = 5   $ Coarse mesh points in Z
+        emesh = 1.0e36              $ Energy bin upper edges (MeV)
+c
+nps     1e9
+
+
