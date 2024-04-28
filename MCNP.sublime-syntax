@@ -59,9 +59,9 @@ contexts:
     - include: DRXS
 
     # mesh-tally
-    - include: FMESHn
     - include: tmesh-markers
     - include: tmesh-numbered
+    - include: FMESHn
     - include: MSHMFn
     - include: XMESH1
     - include: XMESH2
@@ -1227,13 +1227,31 @@ contexts:
     - include: statement-end
     - include: expressions
 
+  tmesh-markers:
+    - match: (?i)^\s{0,4}(TMESH|ENDMD){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+  tmesh-numbered:
+    - match: (?i)^\s{0,4}(cor[abc]|ergsh)(\d*[1-4]){{break}}
+      captures:
+        1: keyword.other.mcnp
+        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+
+  vertical-input:
+    - match: (?i)^\s{0,4}(#){{break}}
+      captures:
+        1: keyword.other.mcnp
+
+###[ CARD NAMES ]##############################################################
+
   ctrl-cardname:
     - match: (?i)^\s{0,4}(nps|ctme|print|talnp|prdmp|mcplot|histp|dbcn|lost|idum|rdum|files){{break}}
       captures:
         1: keyword.control.cardname.mcnp
 
   geometry-cardname:
-    - match: (?i)^\s{0,4}(area|u|lat|uran){{break}}
+    - match: (?i)^\s{0,4}(area|lat|u|uran){{break}}
       captures:
         1: keyword.other.mcnp
 
@@ -1263,22 +1281,6 @@ contexts:
       captures:
         1: keyword.other.mcnp
 
-  tmesh-markers:
-    - match: (?i)^\s{0,4}(TMESH|ENDMD){{break}}
-      captures:
-        1: keyword.other.mcnp
-
-  tmesh-numbered:
-    - match: (?i)^\s{0,4}(cor[abc]|ergsh)(\d*[1-4]){{break}}
-      captures:
-        1: keyword.other.mcnp
-        2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-
-  vertical-input:
-    - match: (?i)^\s{0,4}(#){{break}}
-      captures:
-        1: keyword.other.mcnp
-
   vr-cardname:
     - match: (?i)^\s{0,4}(wwg|pwt){{break}}
       captures:
@@ -1291,13 +1293,13 @@ contexts:
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
   vr-cardname-n-p:
-    - match: (?i)^\s{0,4}(WWN\d+)(?=\:)
+    - match: (?i)^\s{0,4}(WWN)(\d+)(?=:)
       captures:
         1: keyword.other.mcnp
         2: meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
   vr-cardname-p:
-    - match: (?i)^\s{0,4}(imp|ww[etp]|wwg[et]|[et]splt|ext|vect|fcl|dxt|spabi)(?=\:)
+    - match: (?i)^\s{0,4}(imp|ww[etp]|wwg[et]|[et]splt|ext|vect|fcl|dxt|spabi)(?=:)
       captures:
         1: keyword.other.mcnp
 
