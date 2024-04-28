@@ -187,19 +187,19 @@ c Surface Cards
 1  p   3
 $ <- meta.surface.mcnp entity.name.surface.mcnp
 $^^^^^^^^ meta.surface.mcnp
-$  ^ constant.language.surfacetype.mcnp
+$  ^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 1  py  3
 $ <- meta.surface.mcnp entity.name.surface.mcnp
 $^^^^^^^^ meta.surface.mcnp
-$  ^^ constant.language.surfacetype.mcnp
+$  ^^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 2  pz -5
 $ <- meta.surface.mcnp entity.name.surface.mcnp
 $^^^^^^^^ meta.surface.mcnp
-$  ^^ constant.language.surfacetype.mcnp
+$  ^^ storage.type.surface.mcnp
 $     ^^ meta.number.integer.decimal.mcnp
 $     ^ keyword.operator.arithmetic.mcnp
 $      ^ constant.numeric.value.mcnp
@@ -207,13 +207,13 @@ $      ^ constant.numeric.value.mcnp
 3  pz  5
 $ <- meta.surface.mcnp entity.name.surface.mcnp
 $^^^^^^^^ meta.surface.mcnp
-$  ^^ constant.language.surfacetype.mcnp
+$  ^^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 
 4  s   0 -4 -2.5 0.5     $ oxygen sphere
 $ <- meta.surface.mcnp entity.name.surface.mcnp
 $^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
-$  ^ constant.language.surfacetype.mcnp
+$  ^ storage.type.surface.mcnp
 $      ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $        ^^ meta.surface.mcnp meta.number.integer.decimal.mcnp
 $           ^^^^ meta.surface.mcnp meta.number.float.decimal.mcnp
@@ -222,7 +222,7 @@ $                ^^^ meta.surface.mcnp meta.number.float.decimal.mcnp constant.n
 5 K/Y 0 0 2 0.25 1
 $ <- meta.surface.mcnp entity.name.surface.mcnp
 $^^^^^^^^^^^^^^^^^^ meta.surface.mcnp
-$ ^^^ constant.language.surfacetype.mcnp
+$ ^^^ storage.type.surface.mcnp
 $     ^ constant.numeric.value.mcnp
 $       ^ constant.numeric.value.mcnp
 $         ^ constant.numeric.value.mcnp
@@ -248,7 +248,7 @@ $  ^ meta.surface.transformation.mcnp
 $   ^^^^^^ meta.surface.mcnp
 $^ entity.name.surface.mcnp
 $  ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
-$    ^^ constant.language.surfacetype.mcnp
+$    ^^ storage.type.surface.mcnp
 $       ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 *TR7 6 1 -1.732 0 30 60
 $ <- keyword.other.mcnp

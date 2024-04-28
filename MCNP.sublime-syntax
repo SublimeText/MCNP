@@ -242,9 +242,9 @@ contexts:
     - include: statement-end
     - include: expressions
     - match: (?i:p[xyz]?|s[qxyzo]?|[ck]/?[xyz]|gq|t[xyz]){{break}}
-      scope: constant.language.surfacetype.mcnp
+      scope: storage.type.surface.mcnp
     - match: (?i:box|rpp|sph|rcc|rhp|hex|rec|trc|ell|wed|arb){{break}}
-      scope: constant.language.surfacetype.mcnp
+      scope: storage.type.surface.mcnp
 
 ###[ DATA CARDS ]##############################################################
 
