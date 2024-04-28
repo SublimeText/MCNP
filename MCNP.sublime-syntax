@@ -19,16 +19,15 @@ variables:
 
 contexts:
   main:
-    - include: comments
     - include: cell-cards
     - include: surface-cards
     - include: data-cards
     - include: numbers
     - include: operators
 
-  comments:
-    - include: line-comments
-    - include: inline-comments
+  prototype:
+    # comments are prepended to each context
+    - include: comments
 
   data-cards:
     - include: geometry
@@ -145,17 +144,16 @@ contexts:
     - include: PDn
     - include: MESH
 
+
 ###[ COMMENTS ]################################################################
 
-  inline-comments:
-    - match: \$
-      scope: punctuation.definition.comment.mcnp
-      push: comment-body
-
-  line-comments:
+  comments:
     - match: ^\s{0,4}([cC])\s
       captures:
         1: punctuation.definition.comment.mcnp
+      push: comment-body
+    - match: \$
+      scope: punctuation.definition.comment.mcnp
       push: comment-body
 
   comment-body:
@@ -198,14 +196,12 @@ contexts:
         5: constant.numeric.value.mcnp
         6: punctuation.separator.decimal.mcnp
       pop: 1
-    - include: comments
     - include: statement-end
     - include: else-pop
 
   cell-body:
     - meta_content_scope: meta.cell.mcnp
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: cell-groups
     - include: cell-operators
@@ -225,7 +221,6 @@ contexts:
       scope: punctuation.section.group.begin.mcnp
       pop: 1
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: cell-groups
     - include: cell-operators
@@ -253,7 +248,6 @@ contexts:
   surface-cards-body:
     - meta_content_scope: meta.surface.mcnp
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i:p[xyz]?|s[qxyzo]?|[ck]/?[xyz]|gq|t[xyz]){{break}}
@@ -271,7 +265,6 @@ contexts:
 
   ACT-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(dg)\s*(?:(=)\s*)?(lines|mg|none)?{{break}}
@@ -306,7 +299,6 @@ contexts:
 
   BFLDn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(field|vec|axs|refpnt|mxdeflc|maxstep|ffedges)(?=[=\s])
@@ -325,7 +317,6 @@ contexts:
 
   BURN-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(time|pftrac|power|omit|afmin|bopt|swapb|matvol|matmod|mat|PFRAC)(?=[=\s])
@@ -342,7 +333,6 @@ contexts:
 
   Cn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i:t|C)$
@@ -356,7 +346,6 @@ contexts:
 
   DAWWG-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(points|xsec|tally|block)(?=[=\s])
@@ -370,7 +359,6 @@ contexts:
 
   DBRC-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(endf|emax|isos)(?=[=\s])
@@ -391,7 +379,6 @@ contexts:
 
   DECMn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(cells|mat|rho)\s*(?==?)
@@ -412,7 +399,6 @@ contexts:
 
   DEnDFn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(ic|iu|fac)\s*(?==?)
@@ -429,7 +415,6 @@ contexts:
 
   DMn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
 
@@ -441,7 +426,6 @@ contexts:
 
   DRXS-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\d+(\.\d{1,2}[a-z]){{break}}
@@ -464,7 +448,6 @@ contexts:
 
   EMBED-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(debug)\s*(?:(=)\s*)?(echomesh)?{{break}}
@@ -505,7 +488,6 @@ contexts:
 
   EMBEE-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(mtype)\s*(?:(=)\s*)?(flux|isotopic|population|reaction|source|tracks)?{{break}}
@@ -536,7 +518,6 @@ contexts:
 
   En-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s(nt|C){{break}}
@@ -560,7 +541,6 @@ contexts:
 
   F5-detector-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\snd{{break}}
@@ -576,7 +556,6 @@ contexts:
   FCn-body:
     - meta_content_scope: string.unquoted.mcnp
     - include: statement-end
-    - include: comments
 
   FIELD:
     - match: (?i)^\s{0,4}(field){{break}}
@@ -586,7 +565,6 @@ contexts:
 
   FIELD-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(gcut|gpar|grad|gsur)(?=[=\s])
@@ -602,7 +580,6 @@ contexts:
 
   FMESHn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     # cuv
@@ -653,7 +630,6 @@ contexts:
 
   FMULT-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(sfnu|width|sfyield|watt|method|data|shift)(?=[=\s])
@@ -668,7 +644,6 @@ contexts:
 
   FMnFSnFUn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s(t|C)$
@@ -683,7 +658,6 @@ contexts:
 
   FQn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s*(f|d|u|s|m|c|e|t)\s+
@@ -698,7 +672,6 @@ contexts:
 
   FTn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(geb|frv|tmc|scx|elc|phl|cap|res|tag|roc|pds|fft|com|spm|mgc|fns|lcs)\s*(?==?)
@@ -716,7 +689,6 @@ contexts:
 
   Fn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s(T){{break}}
@@ -735,7 +707,6 @@ contexts:
 
   Fn-plus-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s(T){{break}}
@@ -756,7 +727,6 @@ contexts:
 
   KOPTS-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(BLOCKSIZE|FMATSKIP|FMATNCYC|FMATSPACE|FMATN[xyz])(?=[=\s])
@@ -781,7 +751,6 @@ contexts:
 
   KPERTn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(cell|mat|rho|iso|rxn|erg)\s*(?==?)
@@ -802,7 +771,6 @@ contexts:
 
   KSENn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(iso|rxn|mt|erg|ein|legendre|cos)\s*(?==?)
@@ -822,7 +790,6 @@ contexts:
 
   MESH-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(ref|origin|axs|vec|[ijk]mesh|[ijk]ints)\s*(?==?)
@@ -854,7 +821,6 @@ contexts:
 
   MTn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
 
@@ -867,7 +833,6 @@ contexts:
 
   MXn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)model{{break}}
@@ -882,7 +847,6 @@ contexts:
 
   Mn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     # default-libraries:
@@ -902,7 +866,6 @@ contexts:
 
   NACT-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(cells|mat)\s*(?==?)
@@ -917,7 +880,6 @@ contexts:
 
   NAMn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(norm|iso_filter|[xyze]bounds)\s*(?==?)
@@ -937,7 +899,6 @@ contexts:
 
   NCMn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(tally|iso_filter|[xyze]bounds)\s*(?==?)
@@ -955,7 +916,6 @@ contexts:
 
   OTFDB-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
 
@@ -975,7 +935,6 @@ contexts:
 
   PERTn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(cell|mat|rho|method|erg|rxn)\s*(?==?)
@@ -989,7 +948,6 @@ contexts:
 
   PIKMT-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
 
@@ -1007,7 +965,6 @@ contexts:
 
   PTRAC-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     # coinc
@@ -1046,7 +1003,6 @@ contexts:
 
   RAND-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(gen|seed|stride|hist)\s*(?==?)
@@ -1060,7 +1016,6 @@ contexts:
 
   READ-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(noecho|echo){{break}}
@@ -1083,7 +1038,6 @@ contexts:
 
   SDDR-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(contrib)\s*(?:(=)\s*)?(zaid|cell|voxel)?{{break}}
@@ -1102,7 +1056,6 @@ contexts:
 
   SDEF-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\b(fcel|ftr|ferg)(?=[=\s])
@@ -1140,7 +1093,6 @@ contexts:
 
   SSR-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s*(old|cel|new|pty|col|wgt|tr|psc|axs|ext|poa|bcw)(?=[=\s])
@@ -1154,7 +1106,6 @@ contexts:
 
   SSW-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s*(sym|pty|cel)(?=[=\s])
@@ -1168,7 +1119,6 @@ contexts:
 
   STOP-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(nps|ctme)\s*(?==?)
@@ -1192,7 +1142,6 @@ contexts:
 
   TROPT-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     # eloss
@@ -1238,7 +1187,6 @@ contexts:
 
   Tn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)\s*(cbeg|cfrq|cofi|coni|csub|cend)(?=[=\s])
@@ -1260,7 +1208,6 @@ contexts:
 
   VOL-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(no){{break}}
@@ -1276,7 +1223,6 @@ contexts:
 
   XMESH1-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(mfact|trans)\s*(?==?)
@@ -1293,7 +1239,6 @@ contexts:
 
   XMESH2-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(trans)\s*(?==?)
@@ -1308,7 +1253,6 @@ contexts:
 
   XMESH3-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(mfact|trans)\s*(?==?)
@@ -1326,7 +1270,6 @@ contexts:
 
   XMESH4-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
     - match: (?i)(trans)\s*(?==?)
@@ -1341,7 +1284,6 @@ contexts:
 
   XSn-body:
     - include: statement-end
-    - include: comments
     - include: numbers
     - include: operators
 
