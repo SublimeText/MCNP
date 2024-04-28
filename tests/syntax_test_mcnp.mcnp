@@ -337,7 +337,7 @@ $    ^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
 $     ^ punctuation.separator.colon.mcnp
 $      ^ storage.type.particles.mcnp
        origin = 0.0 0.0 0.0
-$      ^^^^^^^ variable.other.mcnp
+$      ^^^^^^ variable.other.mcnp
 $             ^ keyword.operator.assignment.mcnp
 $               ^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
 $                   ^^^ meta.number.float.decimal.mcnp constant.numeric.value.mcnp
@@ -368,12 +368,25 @@ $    ^^^ - keyword
 $        ^^^^^^ - variable
 $               ^^^^^^^^^ comment.line.mcnp
 
+bfld4 type
+$ <- keyword.other.mcnp
+$^^^ keyword.other.mcnp
+$   ^ constant.numeric.value.mcnp
+$     ^^^^ variable.other.mcnp
+
 bfld4 type const
 $ <- keyword.other.mcnp
 $^^^ keyword.other.mcnp
 $   ^ constant.numeric.value.mcnp
 $     ^^^^ variable.other.mcnp
 $          ^^^^^ constant.language.mcnp
+
+bfld4 type =
+$ <- keyword.other.mcnp
+$^^^ keyword.other.mcnp
+$   ^ constant.numeric.value.mcnp
+$     ^^^^ variable.other.mcnp
+$          ^ keyword.operator.assignment.mcnp
 
 bfld4 type = const
 $ <- keyword.other.mcnp
