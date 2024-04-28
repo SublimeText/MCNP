@@ -411,9 +411,6 @@ contexts:
   DRXS-body:
     - include: statement-end
     - include: expressions
-    - match: (?i)\d+(\.\d{1,2}[a-z]){{break}}
-      captures:
-        1: constant.language.mcnp
 
   DSn:
     - match: (?i)^\s{0,4}(ds)(\d+)(\s+[hsltq])?{{break}}

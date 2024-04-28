@@ -313,7 +313,16 @@ $          ^ punctuation.separator.comma.mcnp
 $           ^ storage.type.particles.mcnp
 
 c Data Cards
+
+drxs   08016.31c   1.0   $ oxygen 16
+$ <- keyword.other.mcnp
+$      ^^^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$           ^^^^ constant.language.zaidlib.mcnp
+
 M100   08016.31c   1.0   $ oxygen 16
+$ <- keyword.other.mcnp
+$      ^^^^^ meta.number.integer.decimal.mcnp constant.numeric.value.mcnp
+$           ^^^^ constant.language.zaidlib.mcnp
 
 c
 sdef   par = 1
