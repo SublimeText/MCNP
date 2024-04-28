@@ -29,18 +29,7 @@ contexts:
     - include: comments
 
   data-cards:
-    - include: geometry
-    - include: material
-    - include: physics
-    - include: source
-    - include: tally
-    - include: perturbation
-    - include: mesh-tally
-    - include: variance-reduction
-    - include: control
-    - include: miscellaneous
-
-  control:
+    # control
     - include: ctrl-cardname
     - include: STOP
     - include: RAND
@@ -48,7 +37,7 @@ contexts:
     - include: PIO
     - include: READ
 
-  geometry:
+    # geometry
     - include: geometry-cardname
     - include: geometry-cardname-starred
     - include: geometry-cardname-numbered
@@ -59,7 +48,7 @@ contexts:
     - include: EMBED
     - include: EMBEE
 
-  material:
+    # material
     - include: material-cardname
     - include: Mn
     - include: MTn
@@ -69,7 +58,7 @@ contexts:
     - include: XSn
     - include: DRXS
 
-  mesh-tally:
+    # mesh-tally
     - include: FMESHn
     - include: tmesh-markers
     - include: tmesh-numbered
@@ -80,7 +69,7 @@ contexts:
     - include: XMESH4
     - include: SPDTL
 
-  miscellaneous:
+    # miscellaneous
     - include: vertical-input
     - include: SDDR
     - include: DECMn
@@ -89,12 +78,12 @@ contexts:
     - include: NCMn
     - include: NAMn
 
-  perturbation:
+    # perturbation
     - include: PERTn
     - include: KPERTn
     - include: KSENn
 
-  physics:
+    # physics
     - include: physics-cardname
     - include: physics-cardname-p
     - include: MPHYS
@@ -105,7 +94,7 @@ contexts:
     - include: BFLDn
     - include: FIELD
 
-  source:
+    # source
     - include: SDEF
     - include: SIn
     - include: SPn-SBn
@@ -117,7 +106,7 @@ contexts:
     - include: KOPTS
     - include: BURN
 
-  tally:
+    # tally
     - include: Fn-plus
     - include: F5-detector
     - include: F5-array
@@ -133,7 +122,7 @@ contexts:
     - include: FTn
     - include: NOTRN
 
-  variance-reduction:
+    # variance-reduction
     - include: vr-cardname
     - include: vr-cardname-p
     - include: vr-cardname-n
