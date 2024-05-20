@@ -2,7 +2,10 @@
 <plist version="1.0">
 <dict>
 	<key>scope</key>
-	<string>source.mcnp meta.cell</string>
+	<string>
+		source.mcnp meta.cell,
+		source.mcnp meta.surface
+	</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
